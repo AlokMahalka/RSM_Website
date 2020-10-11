@@ -12,7 +12,7 @@ const User	         = require("./models/user");
 const postRoutes  = require("./routes/posts");
 const indexRoutes = require("./routes/index");
 
-const url = process.env.DATABASEURL || "mongodb://localhost/research"	
+const url = process.env.DATABASE_URL || "mongodb://localhost/research"	
 mongoose.connect(url , {
 	useNewUrlParser: true,
 	useUnifiedTopology:true
