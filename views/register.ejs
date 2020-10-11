@@ -1,0 +1,50 @@
+<%- include ("./partials/header") %>
+        <div class="register inner">
+            <div class="photo">
+                <img src="img/social-girl.svg">
+            </div>
+            <div class="user-form">
+                <h1>Welcome!</h1>
+                <h8><i class="fa fa-info-circle info-icon"></i> Field with <bold style="color: red;">*</bold> is mandatory.</h8>
+                <form id="login-form" class="form" action="/register" method="POST">
+                    <div>
+                        <i class="fa fa-user icon"></i> 
+                        <input type="text" name="username" id="username" placeholder="Your name*">
+                    </div>
+                    <div>
+                        <i class="fa fa-envelope icon"></i> 
+                        <input type="email" name="email" id="email" placeholder="Your e-mail*" required>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h8>Are you an MIT,Manipal student?<bold style="color: red;">*</bold></h8>
+                        </div>
+                    </div>
+                    <div>
+                        <i class="fa fa-envelope icon"></i> 
+                        <input type="email" name="emailMIT" id="emailMIT" placeholder="Your learners*">
+                    </div>
+                    <div>
+                        <i class="fa fa-id-card icon"></i> 
+                        <input type="text" name="regNo" id="regNo" placeholder="Your registration No.*">
+                    </div>
+                    <div>
+                        <i class="fa fa-lock icon"></i> 
+                        <input type="password" name="password" id="password" placeholder="Your password*" required>    
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h8>Admin Login</h8>
+                        </div>
+                    </div>
+                    <div>
+                        <i class="fa fa-lock icon"></i> 
+                        <input type="text" name="adminCode" id="adminCode" placeholder="Enter Admin Code">
+                    </div>
+                    <div class="action-btn">
+                        <button class="btn primary">Create Account</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+<%- include ("./partials/footer") %> 

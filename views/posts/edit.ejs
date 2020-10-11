@@ -1,0 +1,38 @@
+<%- include ("../partials/header") %>
+<div class="container">
+        <h1 style="text-align: center">Edit <%= post.name %></h1>
+        <div style="width: 30%; margin: 25px auto;">
+            <form action="/posts/<%= post._id %>?_method=PUT" method="POST">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input class="form-control" type="text" name="post[name]" value="<%= post.name %>">
+                </div>
+                <div class="form-group">
+                    <label for="title">Title of project</label>
+                    <input class="form-control" type="text" name="post[title]" value="<%= post.title %>">
+                </div>
+                <div class="form-group">
+                    <label for="students">No of students required:</label>
+                    <input class="form-control" type="number" name="post[students]" value="<%= post.students %>">
+                </div>
+                <div class="form-group">
+                    <label for="image">Image URL</label>
+                    <input class="form-control" type="text" name="post[image]" value="<%= post.image %>">
+                </div>
+                <div class="form-group">
+                    <label for="description">About</label>
+                    <input class="form-control" type="text" name="post[description]" value="<%= post.description %>">
+                </div>
+                <div class="form-group">
+                    <label for="endDate">Deadline</label>
+                    <input class="form-control" type="date" name="post[endDate]" value="<%= post.endDate %>">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block">Update</button>
+                </div>
+            </form>
+            <a href="/posts">Go Back</a>
+        </div>
+    </div>
+</div>
+<%- include ("../partials/footer") %>

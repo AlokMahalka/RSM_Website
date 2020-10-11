@@ -1,0 +1,22 @@
+<%- include ("../partials/header") %>
+
+<div class="container solo">
+	<div class="row">
+		<div class="col-md-4">
+			<img src="<%= post.image %>">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-8">
+			<h1> <%= post.title %></h1>
+			<p><%= post.description %></p>
+			<p>Number of Students: <%= post.students %></p>
+			<p>Last Date to apply: <%= post.endDate %></p>
+		<% if(currentUser && currentUser.isAdmin){ %>
+			<a class="btn btn-primary" href="/posts/<%= post._id %>/edit">Edit</a>
+		<% } %>
+		</div>
+	</div>
+</div>
+
+<%- include ("../partials/footer") %>

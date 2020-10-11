@@ -1,0 +1,23 @@
+<%- include ("./partials/header") %>
+        <div class="login outer">
+            <div class="photo">
+                <img src="img/interface.png">
+            </div>
+            <div class="user-form">
+                <h1>Welcome!</h1>
+                <form id="login-form" class="form" action="/login" method="POST">
+                    <div>
+                        <i class="fa fa-user icon"></i> 
+                        <input type="text" name="username" id="username" placeholder="Your name*">
+                    </div>
+                    <div>
+                        <i class="fa fa-lock icon"></i> 
+                        <input type="password" name="password" id="password" placeholder="Your password*" required>    
+                    </div>
+                    <div class="action-btn">
+                        <button class="btn primary">Let's GO</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+<%- include ("./partials/footer") %> 
