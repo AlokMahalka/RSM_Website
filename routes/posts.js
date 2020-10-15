@@ -5,12 +5,11 @@ const middleware = require("../middleware");
 
 //SHOW
 router.get("/",function(req,res){
-	var perPage = 2;
+	var perPage = 8;
     var pageQuery = parseInt(req.query.page);
     var pageNumber = pageQuery ? pageQuery : 1;
 	Post.find({}).skip((perPage * pageNumber) - perPage).limit(perPage).exec(function (err, allPosts) {
-
-		Post.count().exec(function (err, count) {
+		Post.countDocuments().exec(function (err, count) {
             if (err) {
                 console.log(err);
             } else {

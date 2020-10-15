@@ -11,7 +11,7 @@
 			<h1> <%= post.title %></h1>
 			<p><%= post.description %></p>
 			<p>Number of Students: <%= post.students %></p>
-			<p>Last Date to apply: <%= post.endDate %></p>
+			<p>Last Date to apply: <%= moment(post.endDate).format('LL') %></p>
 		<% if(currentUser && currentUser.isAdmin){ %>
 			<a class="btn btn-primary" href="/posts/<%= post._id %>/edit">Edit</a>
 		<% } %>

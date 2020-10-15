@@ -24,16 +24,12 @@
                         <dl class="row">
                           <dt class="col-sm-4">Author:</dt>
                           <dd class="col-sm-8"><%= post.name %></dd>
-
                           <dt class="col-sm-4">No. of student required:</dt>
                           <dd class="col-sm-8"><%= post.students %></dd>
-
                           <dt class="col-sm-4">Last Date to Apply:</dt>
-                          <dd class="col-sm-8"><%= post.endDate %></dd>
-
+                          <dd class="col-sm-8"><%= moment(post.endDate).format('LL') %></dd>
                           <dt class="col-sm-4">About:</dt>
-                          <dd class="col-sm-8"><%- post.description.substring(0,100) %></dd>
-
+                          <dd class="col-sm-8"><%- post.description.substring(0,100) %>...</dd>
                           <a class="btn btn-primary" href="/posts/<%= post._id %>">Read More</a>
                         </dl>
                       </div>
