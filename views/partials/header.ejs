@@ -1,69 +1,43 @@
-<!DOCTYPE html>
-<html>
-<head>
-	  <meta charset="utf-8">
-    <meta http-equiv="X-UA Compatible" content="IE-edge">
-    <meta name="viewport" content="width-device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="/stylesheets/main.css">
-	<title>Research</title>
-</head>
-<body>
-
-      <nav class="navbar navbar-dark navbar-expand-sm fixed-top">
-        <div class="container">
-          <a class="navbar-brand" href="/">Research Society</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="Navbar">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-home fa-lg"></span> Home</a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/#about">About Us</a>
-                    <a class="dropdown-item" href="/#team">Team</a>
-                    <a class="dropdown-item" href="/#faq">FAQ</a>
-                    <a class="dropdown-item" href="/#contact">Contact</a>
-                  </div>
-              <li class="nav-item"><a class="nav-link" href="/posts"><span class="fa fa-list fa-lg"></span> Projects</a></li>
-              <li class="nav-item"><a class="nav-link" href="/events"><span class="fa fa-calendar fa-lg"></span> Events</a></li>
-              <% if(!currentUser){ %>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hello Stranger</a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/login"><span class="fa fa-sign-in fa-lg"></span>  Login</a>
-                    <a class="dropdown-item" href="/register"><span class="fa fa-user-plus fa-lg"></span> Register</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </div>
-                </li>
-              <% } else {%>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Welcome <%= currentUser.username%>!</a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </div>
-                </li>
-              <% } %>
-            </ul>
-          </div>
-        </div>
-      </nav>
-      <div class="container">
-        <% if(error && error.length > 0){ %>
-          <hr>
-          <div class="alert alert-danger" role="alert">
-            <%= error %>
-          </div>
-        <% } %>
-        <% if(success && success.length > 0){ %>
-          <hr>  
-          <div class="alert alert-success" role="alert">
-            <%= success %>
-          </div>
-        <% } %>  
+  <header id="header" class="fixed-top">
+    <div class="container">
+      <div class="logo float-left">
+         <h1 class="text-light"><a href="/"><span>ResearchSociety</span></a></h1>
       </div>
-  
+      <nav class="nav-menu float-right d-none d-lg-block">
+        <ul>
+          <li class="drop-down"><a href="">Home</a>
+            <ul>
+              <li><a href="/#aboutus">About Us</a></li>
+              <li><a href="/#contact">Contact</a></li>
+            </ul>
+          </li>
+          <li><a href="/teams">Team</a></li>
+          <li><a href="/posts">Projects</a></li>
+          <li><a href="/events">Events</a></li>
+        <% if(!currentUser){ %>  
+          <li><a href="/login">Login</a></li>
+        <% } else {%>
+          <li class="drop-down"><a href="">Hello <%= currentUser.username%>!</a>
+            <ul>
+              <li><a href="/logout">Logout</a></li>
+            </ul>
+          </li>
+        <% } %>    
+        </ul>
+      </nav>
+    </div>
+    <!-- <div class="container">
+      <% if(error && error.length > 0){ %>
+        <hr>
+        <div class="alert alert-danger" role="alert">
+          <%= error %>
+        </div>
+      <% } %>
+      <% if(success && success.length > 0){ %>
+        <hr>  
+        <div class="alert alert-success" role="alert">
+          <%= success %>
+        </div>
+      <% } %>  
+    </div> -->
+  </header><!-- End Header -->

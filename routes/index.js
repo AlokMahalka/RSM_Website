@@ -7,10 +7,10 @@ router.get("/",function(req,res){
 	res.render("home");
 });
 
-//Register
-router.get("/register",function(req,res){
-	res.render("register");
+router.get("/teams",function(req,res){
+	res.render("teams");
 });
+
 
 router.post("/register",function(req,res){
 	const newUser = new User({
@@ -29,7 +29,7 @@ router.post("/register",function(req,res){
 			return res.redirect("register");
 		}
 		passport.authenticate("local")(req,res,function(){
-			req.flash("succes","Welcome to Research Society" + user.username);
+			req.flash("success","Welcome to Research Society" + user.username);
 			res.redirect("/posts");
 		})
 	})

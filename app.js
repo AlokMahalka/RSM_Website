@@ -1,6 +1,8 @@
 const express        = require("express");
 const app            = express();
+const path			 = require("path");
 const bodyParser     = require("body-parser");
+const ejsMate        = require("ejs-mate");
 const mongoose       = require("mongoose");
 const flash	   	     = require("connect-flash");
 const passport       = require("passport");
@@ -19,6 +21,7 @@ mongoose.connect(url , {
 });
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine","ejs");
+app.set("views",path.join(__dirname, 'views'));
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 app.use(flash());
@@ -28,6 +31,7 @@ app.use(require("express-session")({
 	resave: false,
 	saveUninitialized:false
 }));
+app.engine('ejs' , ejsMate);
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));

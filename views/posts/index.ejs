@@ -1,95 +1,118 @@
-<%- include ("../partials/header") %>
-<section id="post">
-  <div class="container">
-    <div class="section-title" data-aos="fade-up" style="margin-top: 10px">
-      <h2>Projects</h2>
-      <h3>These are the projects available atm.</h3>
-    </div>
-  </div>
-</section>
-<div class="container">
-  <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <% posts.forEach(function(post){ %>  
-          <div class="well blog" data-aos="fade-right">  
-              <div class="row">
-                  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                      <div class="image">
-                          <img src="<%= post.image %>" alt="">
-                      </div>
-                  </div>
-                  <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-                      <div class="blog-details">
-                        <h2><a href="/posts/<%= post._id %>" class="r-link link text-underlined"><%= post.title %></a></h2>
-                        <dl class="row">
-                          <dt class="col-sm-4">Author:</dt>
-                          <dd class="col-sm-8"><%= post.name %></dd>
-                          <dt class="col-sm-4">No. of student required:</dt>
-                          <dd class="col-sm-8"><%= post.students %></dd>
-                          <dt class="col-sm-4">Last Date to Apply:</dt>
-                          <dd class="col-sm-8"><%= moment(post.endDate).format('LL') %></dd>
-                          <dt class="col-sm-4">About:</dt>
-                          <dd class="col-sm-8"><%- post.description.substring(0,100) %>...</dd>
-                          <a class="btn btn-primary" href="/posts/<%= post._id %>">Read More</a>
-                        </dl>
-                      </div>
-                  </div>
-              </div>  
-          </div>
-        <% }) %>  
-      </div>  
-    </div>
-</div>
-<% if(currentUser && currentUser.isAdmin){ %>
-  <div class="container ">
-    <div class="justify-content-center" style="align-items: center;">
-      <a class="btn btn-primary" href="/posts/new">Add</a>
-    </div>
-  </div>
-<% } %> 
-<nav aria-label="Page navigation">
-    <% if (pages && pages > 0) { %>
-    <ul class="pagination justify-content-center">
-        <% if (current == 1) { %>
-        <li class="page-item disabled"><a class="page-link">First</a></li>
-        <% } else { %>
-        <li><a class="page-link" href="/posts">First</a></li>
-        <% } %>
- 
-        <% if (current == 1) { %>
-        <li class="page-item disabled"><a class="page-link">«</a></li>
-        <% } else { %>
-        <li><a class="page-link" href="/posts?page=<%= Number(current) - 1 %>">«</a></li>
-        <% } %>
- 
-        <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
-        <% if (i !== 1) { %>
-        <li class="page-item disabled"><a class="page-link">...</a></li>
-        <% } %>
-        <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
-        <% if (i == current) { %>
-        <li class="active"><a class="page-link"><%= i %></a></li>
-        <% } else { %>
-        <li><a class="page-link" href="/posts?page=<%= i %>"><%= i %></a></li>
-        <% } %>
-        <% if (i == Number(current) + 4 && i < pages) { %>
-        <li class="page-item disabled"><a class="page-link">...</a></li>
-        <% } %>
-        <% } %>
- 
-        <% if (current == pages) { %>
-        <li class="page-item disabled"><a class="page-link">»</a></li>
-        <% } else { %>
-        <li><a class="page-link" href="/posts?page=<%= Number(current) + 1 %>">»</a></li>
-        <% } %>
- 
-        <% if (current == pages) { %>
-        <li class="page-item disabled"><a class="page-link">Last</a></li>
-        <% } else { %>
-        <li><a class="page-link" href="/posts?page=<%= pages %>">Last</a></li>
-        <% } %>
-    </ul>
-    <% } %>
+<% layout('layouts/boilerplate')%>
+
+  <main id="main">
+
+    <section class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Projects</h2>
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li>Projects</li>
+          </ol>
+        </div>
+      </div>
+    </section><!-- End Blog Section -->
+
+    <!-- ======= Blog Section ======= -->
+    <section class="blog" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 entries">
+          <% posts.forEach(function(post){ %>  
+            <article class="entry">
+              <div class="entry-img">
+                <img src="<%= post.image %>" alt="" class="img-fluid">
+              </div>
+              <h2 class="entry-title">
+                <a href="/posts/<%= post._id %>"><%= post.title %></a>
+              </h2>
+              <div class="entry-meta">
+                <ul>
+                  <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="/posts/<%= post._id %>"><%= post.name %></a></li>
+                  <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="/posts/<%= post._id %>"><%= moment(post.endDate).format('LL') %></a></li>
+                </ul>
+              </div>
+
+              <div class="entry-content">
+                <p><%- post.description.substring(0,100) %>...</p>
+                <div class="read-more">
+                  <a href="/posts/<%= post._id %>">Read More</a>
+                </div>
+              </div>
+
+            </article><!-- End blog entry -->
+          <% }) %>  
+            <div class="blog-pagination">
+              <% if (pages && pages > 0) { %>
+                <ul class="justify-content-center">
+                    <% if (current == 1) { %>
+                    <li class="disabled"><a>First</a></li>
+                    <% } else { %>
+                    <li><a href="/posts">First</a></li>
+                    <% } %>
+             
+                    <% if (current == 1) { %>
+                    <li class="disabled"><a><i class="icofont-rounded-left"></i></a></li>
+                    <% } else { %>
+                    <li><a href="/posts?page=<%= Number(current) - 1 %>"><i class="icofont-rounded-left"></i></a></li>
+                    <% } %>
+             
+                    <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+                    <% if (i !== 1) { %>
+                    <li class="disabled"><a>...</a></li>
+                    <% } %>
+                    <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+                    <% if (i == current) { %>
+                    <li class="active"><a><%= i %></a></li>
+                    <% } else { %>
+                    <li><a href="/posts?page=<%= i %>"><%= i %></a></li>
+                    <% } %>
+                    <% if (i == Number(current) + 4 && i < pages) { %>
+                    <li class="disabled"><a>...</a></li>
+                    <% } %>
+                    <% } %>
+             
+                    <% if (current == pages) { %>
+                    <li class="disabled"><a><i class="icofont-rounded-right"></i></a></li>
+                    <% } else { %>
+                    <li><a href="/posts?page=<%= Number(current) + 1 %>"><i class="icofont-rounded-right"></i></a></li>
+                    <% } %>
+
+                    <% if (current == pages) { %>
+                    <li class="disabled"><a>Last</a></li>
+                    <% } else { %>
+                    <li><a href="/posts?page=<%= pages %>">Last</a></li>
+                    <% } %>
+                </ul>
+              <% } %>
+            </div>
+          </div><!-- End blog entries list -->
+
+          <div class="col-lg-4">
+            <div class="sidebar">
+              <h3 class="sidebar-title">Search</h3>
+              <div class="sidebar-item search-form">
+                <form action="">
+                  <input type="text">
+                  <button type="submit"><i class="icofont-search"></i></button>
+                </form>
+              </div><!-- End sidebar search formn--> 
+            <% if(currentUser && currentUser.isAdmin){ %>  
+              <h3 class="sidebar-title">Add Reseach Project</h3>
+              <div class="sidebar-item tags">
+                <ul>
+                  <li><h2><a href="/posts/new">Add</a></h2></li>
+                </ul>
+              </div>
+            <% } %>  
+            </div><!-- End sidebar -->
+          </div><!-- End blog sidebar -->
+        </div><!-- End .row -->
+      </div><!-- End .container -->
+    </section><!-- End Blog Section -->
+  </main><!-- End #main -->
+<nav aria-label="Page navigation" class="blog-pagination">
+    
 </nav> 
   
-<%- include ("../partials/footer") %>
