@@ -5,8 +5,10 @@
   $(window).scroll(function() {
     if ($(this).scrollTop() > 100) {
       $('#header').addClass('header-scrolled');
+      $("#header button").css("padding", "0");
     } else {
       $('#header').removeClass('header-scrolled');
+      $("#header button").css("padding", "10px 0");
     }
   });
 
@@ -61,9 +63,12 @@
       class: 'mobile-nav d-lg-none'
     });
     $('body').append($mobile_nav);
-    $('body').prepend('<button type="button" class="mobile-nav-toggle d-lg-none"><i class="bx bx-menu"></i></button>');
+    $('#header .container').prepend('<button type="button" class="mobile-nav-toggle d-lg-none"><i class="bx bx-menu"></i></button>');
     $('body').append('<div class="mobile-nav-overly"></div>');
 
+    if (!$('#header').hasClass('header-scrolled')) {
+      $("button").css("padding", "10px 0");
+    }
     $(document).on('click', '.mobile-nav-toggle', function(e) {
       $('body').toggleClass('mobile-nav-active');
       $('.mobile-nav-toggle i').toggleClass('bx-menu bx-x');
@@ -90,14 +95,7 @@
     $(".mobile-nav, .mobile-nav-toggle").hide();
   }
 
-  // Intro carousel
-  var heroCarousel = $("#heroCarousel");
-
-  heroCarousel.on('slid.bs.carousel', function(e) {
-    $(this).find('h2').addClass('animate__animated animate__fadeInDown');
-    $(this).find('p, .btn-get-started').addClass('animate__animated animate__fadeInUp');
-  });
-  // Back to top button
+   // Back to top button
   $(window).scroll(function() {
     if ($(this).scrollTop() > 100) {
       $('.back-to-top').fadeIn('slow');
@@ -124,14 +122,6 @@
     time: 1000
   });
 
-  // Skills section
-  $('.skills-content').waypoint(function() {
-    $('.progress .progress-bar').each(function() {
-      $(this).css("width", $(this).attr("aria-valuenow") + '%');
-    });
-  }, {
-    offset: '80%'
-  });
 
   // Initi AOS
   function aos_init() {

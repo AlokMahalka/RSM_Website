@@ -10,9 +10,20 @@
     <link rel="stylesheet" href="css/login.css" />
     <title>Join Us!</title>
     <link href="/img/Rlogo.png" rel="icon">
-  </head>
   <body>
     <div class="container">
+      <% if(error && error.length > 0){ %>
+        <hr>
+        <div class="alert alert-danger" role="alert">
+          <%= error %>
+        </div>
+      <% } %>
+      <% if(success && success.length > 0){ %>
+        <hr>  
+        <div class="alert alert-success" role="alert">
+          <%= success %>
+        </div>
+      <% } %>  
       <div class="forms-container">
         <div class="signin-signup">
           <form action="/login" method="POST" class="sign-in-form">
@@ -26,33 +37,34 @@
               <input type="password" name="password" placeholder="Password" />
             </div>
             <input type="submit" value="Login" class="btn solid" />
-            <p class="social-text">Or Sign in with social platforms</p>
-            <div class="social-media">
-              <a href="#" class="social-icon">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-google"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-            </div>
-          </form>
+          </form> 
           <form action="/register" method="POST" class="sign-up-form">
             <h2 class="title">Sign up</h2>
-            <div class="input-field">
+            <div class="input-field col-md-6">
               <i class="fas fa-user"></i>
               <input type="text" name="username" placeholder="Username" />
             </div>
-            <div class="input-field">
+            <div class="input-field col-md-6">
               <i class="fas fa-envelope"></i>
               <input type="email" name="email" placeholder="Email" />
             </div>
-            <div class="input-field">
+            <div>
+              Are you an MITian?
+              <input type="checkbox" name="isMIT" id="checkbox1" value="true" />
+            </div>
+            <div class="input-field" id="showthis1">
+              <i class="fa fa-envelope"></i> 
+              <input type="text" name="emailMIT" placeholder="   Learners ID" >
+            </div>
+            <div class="input-field col-md-6">
+              <i class="fas fa-address-book"></i>
+              <input type="text" name="regNo" placeholder="Registration No." />
+            </div>
+            <div>
+              Are you an Admin?
+              <input type="checkbox" name="checkbox" id="checkbox2" value="true" />
+            </div>
+            <div class="input-field" id="showthis2">
                 <i class="fa fa-lock"></i> 
                 <input type="text" name="adminCode" placeholder="Admin Code">
             </div>
@@ -60,22 +72,7 @@
               <i class="fas fa-lock"></i>
               <input type="password" name="password" placeholder="Password" />
             </div>
-            <input type="submit" class="btn" value="Sign up" />
-            <p class="social-text">Or Sign up with social platforms</p>
-            <div class="social-media">
-              <a href="#" class="social-icon">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-google"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-            </div>
+            <input type="submit" class="btn" value="Sign up" />          
           </form>
         </div>
       </div>
@@ -84,10 +81,7 @@
         <div class="panel left-panel">
           <div class="content">
             <h3>New here ?</h3>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
-              ex ratione. Aliquid!
-            </p>
+            <br>
             <button class="btn transparent" id="sign-up-btn">
               Sign up
             </button>
@@ -97,10 +91,7 @@
         <div class="panel right-panel">
           <div class="content">
             <h3>One of us ?</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-              laboriosam ad deleniti.
-            </p>
+            <br>
             <button class="btn transparent" id="sign-in-btn">
               Sign in
             </button>

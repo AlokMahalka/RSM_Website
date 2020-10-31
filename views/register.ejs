@@ -1,4 +1,4 @@
-<%- include ("./partials/header") %>
+<%- include ("./partials/header") %> 
         <div class="register inner">
             <div class="photo">
                 <img src="img/social-girl.svg">
@@ -7,6 +7,18 @@
                 <h1>Welcome!</h1>
                 <h8><i class="fa fa-info-circle info-icon"></i> Field with <bold style="color: red;">*</bold> is mandatory.</h8>
                 <form id="login-form" class="form" action="/register" method="POST">
+                  <div class="row">
+                      <div class="col-md-6">
+                        <div>
+                            <i class="fa fa-user icon"></i> 
+                            <input type="text" name="username" id="username" placeholder="Your name*">
+                        </div>
+                        <div>
+                            <i class="fa fa-user icon"></i> 
+                            <input type="text" name="username" id="username" placeholder="Your name*">
+                        </div>
+                      </div>
+                  </div>
                     <div>
                         <i class="fa fa-user icon"></i> 
                         <input type="text" name="username" id="username" placeholder="Your name*">

@@ -53,7 +53,7 @@ router.get("/:id",middleware.isLoggedIn,function(req,res){
 });
 
 //Edit and Update
-router.get("/:id/edit",middleware.checkPostOwnership,function(req,res){
+router.get("/:id/edit",middleware.isAnAdmin,function(req,res){
 	Post.findById(req.params.id,function(err,foundPost){
 		if(err){
 			res.redirect("/posts");
@@ -63,7 +63,7 @@ router.get("/:id/edit",middleware.checkPostOwnership,function(req,res){
 	});
 });
 
-router.put("/:id",middleware.checkPostOwnership,function(req,res){
+router.put("/:id",middleware.isAnAdmin,function(req,res){
 	Post.findByIdAndUpdate(req.params.id,req.body.post,function(err,updatePost){
 		if(err){
 			res.redirect("/post");

@@ -4,12 +4,12 @@ const passport = require("passport");
 const User = require("../models/user");
 
 router.get("/",function(req,res){
-	res.render("home");
+	res.render("home"); 
 });
 
 router.get("/teams",function(req,res){
 	res.render("teams");
-});
+}); 
 
 
 router.post("/register",function(req,res){
@@ -26,11 +26,11 @@ router.post("/register",function(req,res){
 	User.register(newUser,req.body.password,function(err,user){
 		if(err){
 			req.flash("error",err.message);
-			return res.redirect("register");
+			return res.redirect("login");
 		}
 		passport.authenticate("local")(req,res,function(){
 			req.flash("success","Welcome to Research Society" + user.username);
-			res.redirect("/posts");
+			res.redirect("/");
 		})
 	})
 });
@@ -41,7 +41,7 @@ router.get("/login",function(req,res){
 });
 
 router.post("/login",passport.authenticate("local", {
-		successRedirect:"/posts",
+		successRedirect:"/",
 		failureRedirect:"/login"
 	}), function(req,res){
 });
@@ -50,7 +50,7 @@ router.post("/login",passport.authenticate("local", {
 router.get("/logout",function(req,res){
 	req.logout();
 	req.flash("success","Logged you Out");
-	res.redirect("/posts");
+	res.redirect("/");
 });
 
 

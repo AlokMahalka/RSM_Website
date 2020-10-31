@@ -1,0 +1,67 @@
+<% layout('layouts/boilerplate')%>
+
+<main id="main">
+    <section class="breadcrumbs">
+        <div class="container">
+          <div class="d-flex justify-content-between align-items-center">
+            <h2>Events</h2>
+            <ol>
+              <li><a href="/">Home</a></li>
+              <li>Events</li>
+            </ol>
+          </div>
+        </div>
+    </section>
+
+    <section class="event">
+      <div class="container">
+        <div class="section-title">
+          <h2>Upcoming Events</h2>
+        </div>
+        <div class="row event-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+        <% events.forEach(function(event){ %>
+        <%  if((event.onDate) > Date.now()){ %>  
+          <div class="col-lg-4 col-md-6">
+            <div class="event-item">
+              <img src="<%= event.image %>" class="img-fluid" alt="">
+              <div class="event-info">
+                <h3><a href="/events/<%= event._id %>"><%= event.title %></a></h3>
+                <div>
+                  <a href="" title="Apply Form"><i class="bx bx-plus"></i></a>
+                  <a href="/events/<%= event._id %>" title="Event Details"><i class="bx bx-link"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% }}) %>  
+        </div>
+      </div>
+    </section>  
+
+    <section class="event">
+      <div class="container">
+        <div class="section-title">
+          <h2>Past Events</h2>
+        </div>
+        <div class="row event-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+        <% events.forEach(function(event){ %>
+        <%  if((event.onDate) < Date.now()){ %>  
+          <div class="col-lg-4 col-md-6">
+            <div class="event-item">
+              <img src="<%= event.image %>" class="img-fluid" alt="">
+              <div class="event-info">
+                <h3><a href="/events/<%= event._id %>"><%= event.title %></a></h3>
+                <div>
+                  <a href="/events/<%= event._id %>" title="Event Details"><i class="bx bx-link"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% }}) %>  
+        </div>
+      </div>
+    </section> 
+    
+    <a href="/events/new">Add</a>
+
+</main>

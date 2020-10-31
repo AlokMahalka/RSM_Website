@@ -1,0 +1,45 @@
+<% layout('layouts/boilerplate')%>
+
+<main id="main">
+    <section class="breadcrumbs">
+        <div class="container">
+          <div class="d-flex justify-content-between align-items-center">
+            <h2>Events</h2>
+            <ol>
+              <li><a href="/">Home</a></li>
+              <li><a href="/events">Projects</a></li>
+              <li><%= event.title %></li>
+            </ol>
+          </div>
+        </div>
+    </section>
+    <!-- ======= Event Details Section ======= -->
+    <section class="event-details">
+      <div class="container">
+
+        <div class="event-details-container">
+
+          <div class="owl-carousel event-details-carousel">
+            <img src="<%= event.image %>"  alt="">
+          </div>
+          <%= event.image %>
+          <div class="event-info">
+            <h3>Event information</h3>
+            <ul>
+              <li><strong>Date:</strong><%= moment(event.onDate).format('LL') %></li>
+              <li><strong>Time:</strong>: <%= event.time %></li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div class="event-description">
+          <h2><%= event.title %></h2>
+          <p><%= event.description %></p>
+        </div>
+      </div>
+      <% if(currentUser && currentUser.isAdmin){ %>
+				<a class="btn btn-primary" href="/events/<%= event._id %>/edit">Edit</a>
+			<% } %>
+    </section><!-- End Event Details Section -->
+</main>

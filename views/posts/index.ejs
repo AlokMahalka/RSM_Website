@@ -18,6 +18,27 @@
     <section class="blog" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
       <div class="container">
         <div class="row">
+
+          <div class="col-lg-4">
+            <div class="sidebar">
+              <h3 class="sidebar-title">Search</h3>
+              <div class="sidebar-item search-form">
+                <form action="">
+                  <input type="text">
+                  <button type="submit"><i class="icofont-search"></i></button>
+                </form>
+              </div><!-- End sidebar search formn--> 
+            <% if(currentUser && currentUser.isAdmin){ %>  
+              <h3 class="sidebar-title">Add Reseach Project</h3>
+              <div class="sidebar-item tags">
+                <ul>
+                  <li><h2><a href="/posts/new">Add</a></h2></li>
+                </ul>
+              </div>
+            <% } %>  
+            </div><!-- End sidebar -->
+          </div><!-- End blog sidebar -->
+
           <div class="col-lg-8 entries">
           <% posts.forEach(function(post){ %>  
             <article class="entry">
@@ -88,26 +109,6 @@
               <% } %>
             </div>
           </div><!-- End blog entries list -->
-
-          <div class="col-lg-4">
-            <div class="sidebar">
-              <h3 class="sidebar-title">Search</h3>
-              <div class="sidebar-item search-form">
-                <form action="">
-                  <input type="text">
-                  <button type="submit"><i class="icofont-search"></i></button>
-                </form>
-              </div><!-- End sidebar search formn--> 
-            <% if(currentUser && currentUser.isAdmin){ %>  
-              <h3 class="sidebar-title">Add Reseach Project</h3>
-              <div class="sidebar-item tags">
-                <ul>
-                  <li><h2><a href="/posts/new">Add</a></h2></li>
-                </ul>
-              </div>
-            <% } %>  
-            </div><!-- End sidebar -->
-          </div><!-- End blog sidebar -->
         </div><!-- End .row -->
       </div><!-- End .container -->
     </section><!-- End Blog Section -->

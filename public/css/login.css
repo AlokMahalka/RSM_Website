@@ -66,6 +66,10 @@ form.sign-in-form {
   margin-bottom: 10px;
 }
 
+#showthis1 i , #showthis2 i{
+  padding-left: 14px;
+}
+
 .input-field {
   max-width: 380px;
   width: 100%;
@@ -211,12 +215,6 @@ form.sign-in-form {
   font-size: 1.5rem;
 }
 
-.panel p {
-  font-size: 0.95rem;
-  padding: 0.7rem 0;
-}
-
-
 .btn.transparent {
   margin: 0;
   background: none;
@@ -302,7 +300,7 @@ form.sign-in-form {
   }
 
   .right-panel {
-    grid-row: 3 / 4;
+    grid-row: 5/8;
   }
 
   .left-panel {
@@ -340,7 +338,7 @@ form.sign-in-form {
     width: 1500px;
     height: 1500px;
     transform: translateX(-50%);
-    left: 30%;
+    left: -16%;
     bottom: 68%;
     right: initial;
     top: initial;
@@ -374,7 +372,7 @@ form.sign-in-form {
   }
 }
 
-@media (max-width: 570px) {
+@media (max-width: 650px) {
   form {
     padding: 0 1.5rem;
   }
@@ -395,7 +393,7 @@ form.sign-in-form {
   }
 
   .container.sign-up-mode:before {
-    bottom: 28%;
+    bottom: 18%;
     left: 50%;
   }
 }

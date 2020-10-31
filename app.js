@@ -8,11 +8,12 @@ const flash	   	     = require("connect-flash");
 const passport       = require("passport");
 const methodOverride = require("method-override");
 const LocalStrategy  = require("passport-local");
-const Post 	   	     = require("./models/post");
 const User	         = require("./models/user");
+
 
 const postRoutes  = require("./routes/posts");
 const indexRoutes = require("./routes/index");
+const eventRoutes = require("./routes/events");
 
 const url = process.env.DATABASE_URL || "mongodb://localhost/research"	
 mongoose.connect(url , {
@@ -46,6 +47,8 @@ app.use(function(req,res,next){
 
 app.use(indexRoutes);
 app.use("/posts",postRoutes);
+app.use("/events", eventRoutes);
+
 
 const port = process.env.PORT || 3000;
 app.listen(port, function () {
