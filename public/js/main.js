@@ -66,9 +66,6 @@
     $('#header .container').prepend('<button type="button" class="mobile-nav-toggle d-lg-none"><i class="bx bx-menu"></i></button>');
     $('body').append('<div class="mobile-nav-overly"></div>');
 
-    if (!$('#header').hasClass('header-scrolled')) {
-      $("button").css("padding", "10px 0");
-    }
     $(document).on('click', '.mobile-nav-toggle', function(e) {
       $('body').toggleClass('mobile-nav-active');
       $('.mobile-nav-toggle i').toggleClass('bx-menu bx-x');
@@ -153,3 +150,42 @@
     });
   }, false);
 })();
+
+
+document.getElementById("showthis1").style.display = "none";
+
+document.getElementById('checkbox1').onclick = function() {
+  // call toggleSub when checkbox clicked
+  // toggleSub args: checkbox clicked on (this), id of element to show/hide
+  toggleSub(this, 'showthis1');
+};
+
+// called onclick of checkbox
+function toggleSub(box, id) {
+  // get reference to related content to display/hide
+  var el = document.getElementById(id);
+  if ( box.checked ) {
+      el.style.display = 'block';
+  } else {
+      el.style.display = 'none';
+  }
+}
+
+document.getElementById("showthis2").style.display = "none";
+
+document.getElementById('checkbox2').onclick = function() {
+  // call toggleSub when checkbox clicked
+  // toggleSub args: checkbox clicked on (this), id of element to show/hide
+  toggleSub(this, 'showthis2');
+};
+
+// called onclick of checkbox
+function toggleSub(box, id) {
+  // get reference to related content to display/hide
+  var el = document.getElementById(id);
+  if ( box.checked ) {
+      el.style.display = 'block';
+  } else {
+      el.style.display = 'none';
+  }
+}

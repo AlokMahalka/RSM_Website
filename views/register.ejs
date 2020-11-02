@@ -1,81 +1,58 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Register</title>
-  <link href="/img/Rlogo.png" rel="icon">
-	<link rel="stylesheet" type="text/css" href="css/login.css">
-	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/a81368914c.js"></script>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-	<img class="wave" src="img/wave.png">
-	<div class="container">
-		<div class="img">
-			<img src="img/bg.svg">
-		</div>
-		<div class="login-content">
-			<form action="/register" method="POST" >
-				<img src="img/avatar.svg">
-				<h2 class="title">Register</h2>
-           		<div class="input-div one">
-           		  <div class="i">
-           		  	<i class="fas fa-user"></i>
-           		  </div>
-           		  <div class="div">
-           		  	<h5>Username</h5>
-                  <input type="text" name="username" class="input" required>
-           		  </div>
-              </div>
-              <div class="input-div one">
-                <div class="i">
-                  <i class="fas fa-envelope"></i>
-                </div>
-                <div class="div">
-                  <h5>Email</h5>
-                  <input type="email" name="email" class="input" required>
-                </div>
-              </div>
-              <div>
-                Are you an MITian?
-                <input type="checkbox" name="isMIT" id="checkbox1" value="true" />
-              </div>
-              <div class="input-div one" id="showthis1">
-                <div class="i">
-                  <i class="fas fa-envelope"></i>
-                </div>
-                <div class="div">
-                  <h5>LearnersId</h5>
-                  <input type="email" name="emailMIT" class="input" >
-                </div>
-              </div>
-              <div class="input-div one">
-                <div class="i">
-                  <i class="fas fa-address-book"></i>
-                </div>
-                <div class="div">
-                  <h5>Registration No.</h5>
-                  <input type="text" name="regNo" class="input">
-                </div>
-              </div>
-           		<div class="input-div pass">
-           		   <div class="i"> 
-           		    	<i class="fas fa-lock"></i>
-           		   </div>
-           		   <div class="div">
-           		    	<h5>Password</h5>
-           		    	<input type="password" name="password" class="input" required>
-            	   </div>
-            	</div>
-            	<a href="/login">Login Here</a>
-            	<input type="submit" class="btn" value="Register">
-            </form>
-        </div>
-    </div>
-    <script type="text/javascript" src="js/login.js"></script>
-    <script src="/vendor/jquery/jquery.min.js"></script>
-    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="/vendor/jquery.easing/jquery.easing.min.js"></script>
-</body>
-</html>
+<% layout('layouts/boilerplate')%>
 
+
+
+  <section class="new-edit-form" id="new-edit-form" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-lg-3">
+        </div>
+        <div class="col-lg-6">
+        <% if(typeof alert != 'undefined'){ %>
+        <%   alert.forEach(function(error){ %>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <%= error.msg %>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+        <% }) %>
+        <%} %>  
+          
+
+          <form action="/register" method="post" role="form" class="credit-form">
+            <div class="form-row">
+              <div class="col-md-6 form-group">
+                <input type="text" name="username" class="form-control" placeholder="Username"/>
+              </div>
+              <div class="col-md-6 form-group">
+                <input type="email" name="email" class="form-control" placeholder="Email"/>                
+              </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 form-group">
+                  Are you from MIT?  
+                  <input type="checkbox" name="isMIT" id="checkbox1" value="true" />
+                  <input type="email" name="emailMIT" class="form-control" id="showthis1" placeholder="LearnersId"/>                  
+                </div>
+                <div class="col-md-6 form-group">
+                  Have an Admin Code?
+                  <input type="checkbox" name="checkbox" id="checkbox2" value="true" /> 
+                  <input type="password" name="adminCode" class="form-control" id="showthis2" placeholder="AdminCode"/>
+                </div>
+            </div>
+            <div class="form-group">
+              <input type="text" name="regNo" class="form-control" placeholder="Registration Number"/>
+            </div>
+            <div class="form-group">
+              <input type="text" name="regNo" class="form-control" placeholder="Password">
+            </div>
+            <div class="text-center"><button type="submit">Register</button></div>
+            <br>Have an account? <a href="/login">Login Here</a>
+          </form>
+        </div>
+        <div class="col-lg-3">
+        </div>
+      </div>
+    </div>
+</section>

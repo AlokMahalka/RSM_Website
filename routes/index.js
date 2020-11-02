@@ -19,20 +19,21 @@ router.get("/register",function(req,res){
 router.post("/register",[
 	check("username")
 	.isLength({min:3 , max: 12}).withMessage("Must be 3-12 characters long")
-	.isAlpha().withMessage('Must be only alphabetical chars'),
+	.isAlpha().withMessage('Username should only contain a-zA-Z'),
 	check("email")
 	.isEmail().withMessage("Email is not valid"),
 	check("emailMIT")
-	.isEmail().withMessage("Learners ID is not valid")
-	.contains("@learner.manipal.edu").withMessage("Email not valid"),
+	.isEmail()
+	.contains("@learner.manipal.edu").withMessage("Learners ID is not valid"),
 	check("regNo")
-	.isNumeric()
+	.isNumeric().withMessage("Invalid Registration Number")
 	.isLength({min:9, max:9})
 ],function(req,res){
-	const errors = validationResult(req)
+	const errors = validationResult(req);
 	if (!errors.isEmpty()) {
-		res.render("register",{ errors });
-	}
+		const alert = errors.array();
+		res.render("register",{ alert });
+	}else{
 	const newUser = new User({
 		username: req.body.username , 
 		email   : req.body.email , 
@@ -44,15 +45,11 @@ router.post("/register",[
 		newUser.isAdmin =true;
 	}
 	User.register(newUser,req.body.password,function(err,user){
-		if(err){
-			req.flash("error",err.message);
-			return res.redirect("login");
-		}
 		passport.authenticate("local")(req,res,function(){
 			req.flash("success","Welcome to Research Society" + user.username);
 			res.redirect("/");
 		})
-	})
+	})}
 });
 
 //Login
