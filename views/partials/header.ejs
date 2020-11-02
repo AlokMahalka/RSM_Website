@@ -15,7 +15,12 @@
           <li><a href="/posts">Projects</a></li>
           <li><a href="/events">Events</a></li>
         <% if(!currentUser){ %>  
-          <li><a href="/login">Login</a></li>
+          <li class="drop-down"><a href="">Hello Stranger!</a>
+            <ul>
+              <li><a href="/login">Login</a></li>
+              <li><a href="/register">Register</a></li>
+            </ul>
+          </li>
         <% } else {%>
           <li class="drop-down"><a href="">Hello <%= currentUser.username%>!</a>
             <ul>

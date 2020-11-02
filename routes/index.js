@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const { check , validationResult } = require("express-validator");  
 const passport = require("passport");
 const User = require("../models/user");
 
@@ -11,8 +12,27 @@ router.get("/teams",function(req,res){
 	res.render("teams");
 }); 
 
+router.get("/register",function(req,res){
+	res.render("register");
+});
 
-router.post("/register",function(req,res){
+router.post("/register",[
+	check("username")
+	.isLength({min:3 , max: 12}).withMessage("Must be 3-12 characters long")
+	.isAlpha().withMessage('Must be only alphabetical chars'),
+	check("email")
+	.isEmail().withMessage("Email is not valid"),
+	check("emailMIT")
+	.isEmail().withMessage("Learners ID is not valid")
+	.contains("@learner.manipal.edu").withMessage("Email not valid"),
+	check("regNo")
+	.isNumeric()
+	.isLength({min:9, max:9})
+],function(req,res){
+	const errors = validationResult(req)
+	if (!errors.isEmpty()) {
+		res.render("register",{ errors });
+	}
 	const newUser = new User({
 		username: req.body.username , 
 		email   : req.body.email , 
