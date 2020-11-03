@@ -14,7 +14,9 @@ const userSchema = new mongoose.Schema({
 	isMIT:{
 		type: String,
 		default:"false"
-	}
+	},
+	emailToken:String,
+	isVerified:Boolean
 });
 
 userSchema.plugin(passportLocalMongoose);
