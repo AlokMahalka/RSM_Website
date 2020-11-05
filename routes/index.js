@@ -48,7 +48,7 @@ router.get("/register",function(req,res){
 
 router.post("/register",[
 		check("username")
-		.isLength({min:3 , max: 12}).withMessage("Must be 3-12 characters long")
+		.isLength({min:3 , max: 15}).withMessage("Username must be 3-15 characters long")
 		.isAlpha().withMessage('Username should only contain a-zA-Z'),
 		check("email")
 		.isEmail().withMessage("Email is not valid"),
@@ -56,7 +56,7 @@ router.post("/register",[
 		.isNumeric().withMessage("Invalid Registration Number")
 		.isLength({min:9}),
 		check('password')
-    	.isLength({min:6}).withMessage("Password must be 6 characters long")
+    	.isLength({min:6 , max: 12}).withMessage("Password must be 6-12 characters long")
 	],function(req,res){
 		const errors = validationResult(req);
 		if (!errors.isEmpty()) {
