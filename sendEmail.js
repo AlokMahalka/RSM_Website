@@ -13,7 +13,7 @@ const sendEmail = (to, from, subject, text) => {
     if (err) {
       console.log("Email Not Sent Error Occured");
     } else {
-      console.log("Email was Sent");
+      console.log(`Email was sent to ${msg.to}`);
     }
   });
 };

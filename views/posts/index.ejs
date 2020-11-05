@@ -23,23 +23,34 @@
             <div class="sidebar">
               <h3 class="sidebar-title">Search</h3>
               <div class="sidebar-item search-form">
-                <form action="">
-                  <input type="text">
+                <form action="/posts" method="GET">
+                  <input type="text" name="search">
                   <button type="submit"><i class="icofont-search"></i></button>
                 </form>
               </div><!-- End sidebar search formn--> 
-            <% if(currentUser && currentUser.isAdmin){ %>  
-              <h3 class="sidebar-title">Add Reseach Project</h3>
+              <h5 class="sidebar-title">Have suggestion on events or projects? Contct Us Here</h5>
               <div class="sidebar-item tags">
                 <ul>
-                  <li><h2><a href="/posts/new">Add</a></h2></li>
+                  <li><h2><a href="/#contact">Contact</a></h2></li>
                 </ul>
               </div>
-            <% } %>  
+              <% if(currentUser && currentUser.isAdmin){ %>  
+                <h3 class="sidebar-title">Admin Functionalities</h3>
+                <div class="sidebar-item tags">
+                  <ul>
+                    <li><h2><a href="/posts/new">Add</a></h2></li>
+                  </ul>
+                </div>
+              <% } %>  
             </div><!-- End sidebar -->
           </div><!-- End blog sidebar -->
 
           <div class="col-lg-8 entries">
+          <% if(noMatch !== null) {%>
+            <div class="col-md-12">
+                  <%= noMatch %>
+            </div>
+          <% } %>
           <% posts.forEach(function(post){ %>  
             <article class="entry">
               <div class="entry-img">
@@ -56,7 +67,7 @@
               </div>
 
               <div class="entry-content">
-                <p><%- post.description.substring(0,100) %>...</p>
+                <p><%- post.descIntro %>...</p>
                 <div class="read-more">
                   <a href="/posts/<%= post._id %>">Read More</a>
                 </div>

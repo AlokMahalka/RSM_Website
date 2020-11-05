@@ -5,7 +5,9 @@ const postSchema = new mongoose.Schema({
 	title:String,
 	name:String,
 	image: String,
-	description:String,
+	skills:String,
+	descIntro:String,
+	desc:String,
     endDate:{type:Date},
     students:Number
 });

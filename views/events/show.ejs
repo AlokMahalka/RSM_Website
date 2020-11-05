@@ -19,15 +19,19 @@
 
         <div class="event-details-container">
 
-          <div class="owl-carousel event-details-carousel">
-            <img src="<%= event.image %>"  alt="">
+          <div class="owl-carousel event-details-carousel"> 
+            <img src="<%= event.image %>"  alt="<%= event.image %>">
           </div>
-          <%= event.image %>
           <div class="event-info">
             <h3>Event information</h3>
             <ul>
-              <li><strong>Date:</strong><%= moment(event.onDate).format('LL') %></li>
-              <li><strong>Time:</strong>: <%= event.time %></li>
+              <%  if(event.isOver){ %>
+                <li><strong>Held on <%= moment(event.onDate).format('LL') %></li>
+              <% }else {%>  
+              <li><strong>Date:</strong> <%= moment(event.onDate).format('LL') %></li>
+              <li><strong>Time:</strong> <%= event.time %></li>
+              <li><strong>Register Link:</strong><a href="<%= event.applyLink %>"> Click Here</a></li>
+              <% } %>
             </ul>
           </div>
 
@@ -37,9 +41,10 @@
           <h2><%= event.title %></h2>
           <p><%= event.description %></p>
         </div>
+        <% if(currentUser && currentUser.isAdmin){ %>
+          <a class="btn btn-primary" href="/events/<%= event._id %>/edit">Edit</a>
+        <% } %>
       </div>
-      <% if(currentUser && currentUser.isAdmin){ %>
-				<a class="btn btn-primary" href="/events/<%= event._id %>/edit">Edit</a>
-			<% } %>
+      
     </section><!-- End Event Details Section -->
 </main>

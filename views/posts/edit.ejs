@@ -44,7 +44,19 @@
               </div>
             </div>
             <div class="form-group">
-              <textarea class="form-control" name="post[description]" rows="8" required><%= post.description %></textarea>
+              <input type="text" class="form-control" name="post[skills]" value="<%= post.skills %>" id="image" required/>
+              <div class="invalid-feedback">
+                What skills are required?
+              </div>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" name="post[descIntro]" rows="4" required><%= post.descIntro %></textarea>
+              <div class="invalid-feedback">
+                Give it a introduction.
+              </div>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" name="post[desc]" rows="8" required><%= post.desc %></textarea>
               <div class="invalid-feedback">
                 Tell them something about the project.
               </div>

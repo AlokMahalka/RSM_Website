@@ -10,8 +10,12 @@ router.get("/",function(req,res){
 	res.render("home"); 
 });
 
-router.get("/sent", function(req,res){
-	res.render("sent");
+router.get("/sentFeedback", function(req,res){
+	res.render("sentMail/sentFeed");
+});
+
+router.get("/sentEmail", function(req,res){
+	res.render("sentMail/sentEmail");
 });
 
 router.post('/sendemail', function(req,res){
@@ -42,42 +46,59 @@ router.get("/register",function(req,res){
 	res.render("register");
 });
 
-router.post("/register",async function(req,res){
-	const newUser = new User({
-		username  : req.body.username , 
-		email     : req.body.email , 
-		emailMIT  : req.body.emailMIT,
-		regNo	  : req.body.regNo ,
-		isMIT	  : req.body.isMIT,
-		emailToken:	crypto.randomBytes(64).toString('hex'),
-		isVerified: false
-	});
-	if(req.body.adminCode === "secretCode123"){
-		newUser.isAdmin =true;
-	}
-	User.register(newUser,req.body.password,async function(err,user){
-		if(err){
-			console.log(err);
-			return res.redirect('register');
+router.post("/register",[
+		check("username")
+		.isLength({min:3 , max: 12}).withMessage("Must be 3-12 characters long")
+		.isAlpha().withMessage('Username should only contain a-zA-Z'),
+		check("email")
+		.isEmail().withMessage("Email is not valid"),
+		check("regNo")
+		.isNumeric().withMessage("Invalid Registration Number")
+		.isLength({min:9}),
+		check('password')
+    	.isLength({min:6}).withMessage("Password must be 6 characters long")
+	],function(req,res){
+		const errors = validationResult(req);
+		if (!errors.isEmpty()) {
+			const alert = errors.array();
+			res.render("register",{ alert });
 		}else{
-				const from = 'alokmahalka1234@gmail.com';
-				const to  = user.email;
-				const subject = 'Email Veriication';
-				const output = ` 
-				<h1>Hello</h1>
-				<p>Thanks for registering.</p>
-				<p>Please copy and page the address below to verify your account.<p>
-				<a href="http://${req.headers.host}/verify-email?token=${user.emailToken}">Verify your account</a> ` 
-			try{
-				sendEmail(to,from,subject,output);
-				res.redirect('sent');
-			}catch(error){
-				console.log(error);
-				res.redirect('register');
+			const newUser = new User({
+				username  : req.body.username , 
+				email     : req.body.email , 
+				emailMIT  : req.body.emailMIT,
+				regNo	  : req.body.regNo ,
+				isMIT	  : req.body.isMIT,
+				emailToken:	crypto.randomBytes(64).toString('hex'),
+				isVerified: false
+			});
+			if(req.body.adminCode === "secretCode123"){
+				newUser.isAdmin = true;
 			}
+			User.register(newUser,req.body.password,async function(err,user){
+				if(err){
+					console.log(err);
+					return res.redirect('register');
+				}else{
+						const to  = user.email;
+						const from = 'alokmahalka1234@gmail.com';
+						const subject = 'Research Society Email Verifcation';
+						const output = ` 
+						<h1>Welcome to Research Society!</h1>
+						<p>Thank You for registering.</p>
+						<p>Lets confirm your Email Address!<p>
+						<a href="http://${req.headers.host}/verify-email?token=${user.emailToken}">Confirm Your Email</a> ` 
+					try{
+						sendEmail(to,from,subject,output);
+						res.redirect('sentEmail');
+					}catch(error){
+						console.log(error);
+						res.redirect('register');
+					}
+				}
+			})
 		}
-	})
-});
+	});
 
 router.get('/verify-email', async(req,res,next) => {
 	try{
@@ -91,7 +112,6 @@ router.get('/verify-email', async(req,res,next) => {
 		await user.save();
 		await req.login(user, async(err) => {
 			if(err) return next(err);
-			console.log(`Welcome to RS organisation ${user.username}`);
 			const redirectUrl = req.session.redirectTo || '/';
 			delete req.session.redirectTo;
 			res.redirect(redirectUrl);

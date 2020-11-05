@@ -44,6 +44,12 @@
               </div>
             </div>
             <div class="form-group">
+              <input type="text" class="form-control" name="event[applyLink]" value="<%= event.applyLink %>" id="applyLink"/>
+              <div class="invalid-feedback">
+                Registration Link for the Event! 
+              </div>
+            </div>
+            <div class="form-group">
               <textarea class="form-control" name="event[description]" rows="8" required><%= event.description %></textarea>
               <div class="invalid-feedback">
                 Tell them something about the event.

@@ -6,7 +6,12 @@ const eventSchema = new mongoose.Schema({
 	location:String,
 	image: String,
 	description:String,
-	onDate:{type:Date}
+	applyLink:String,
+	onDate:{type:Date},
+	isOver: {
+		type:Boolean,
+		default: false 
+	}
 });
 
 module.exports = mongoose.model("Event",eventSchema);

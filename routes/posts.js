@@ -5,22 +5,49 @@ const middleware = require("../middleware");
 
 //SHOW
 router.get("/",function(req,res){
-	var perPage = 6;
-    var pageQuery = parseInt(req.query.page);
-    var pageNumber = pageQuery ? pageQuery : 1;
-	Post.find({}).skip((perPage * pageNumber) - perPage).limit(perPage).exec(function (err, allPosts) {
-		Post.countDocuments().exec(function (err, count) {
-            if (err) {
-                console.log(err);
-            } else {
-                res.render("posts/index", {
-                    posts: allPosts,
-                    current: pageNumber,
-                    pages: Math.ceil(count / perPage)
-                });
-            }
-        });
-	});
+	var noMatch;
+	if(req.query.search){
+		const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+		var perPage = 6;
+		var pageQuery = parseInt(req.query.page);
+		var pageNumber = pageQuery ? pageQuery : 1;
+		Post.find({title: regex}).skip((perPage * pageNumber) - perPage).limit(perPage).exec(function (err, allPosts) {
+			Post.countDocuments().exec(function (err, count) {
+				if (err) {
+					console.log(err);
+				} else {
+					if(allPosts.length < 1){
+						noMatch = "No project match that query, please try again!";
+					}
+					res.render("posts/index", {
+						posts: allPosts,
+						current: pageNumber,
+						pages: Math.ceil(count / perPage),
+						noMatch: noMatch
+					});
+				}
+			});
+		});
+	} else { 
+		var perPage = 6;
+		var pageQuery = parseInt(req.query.page);
+		var pageNumber = pageQuery ? pageQuery : 1;
+		Post.find({}).skip((perPage * pageNumber) - perPage).limit(perPage).exec(function (err, allPosts) {
+			Post.countDocuments().exec(function (err, count) {
+				if (err) {
+					console.log(err);
+				} else {
+					res.render("posts/index", {
+						posts: allPosts,
+						current: pageNumber,
+						pages: Math.ceil(count / perPage),
+						noMatch: noMatch
+					});
+				}
+			});
+		});
+	}
+	
 });
 
 //NEW 
@@ -72,5 +99,9 @@ router.put("/:id",middleware.isAnAdmin,function(req,res){
 		}
 	});
 });
+
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
 
 module.exports = router;

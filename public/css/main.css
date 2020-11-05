@@ -1503,6 +1503,10 @@ section {
   z-index: 1;
 }
 
+.event-details .owl-carousel{
+  display: block;
+}
+
 .event-details .event-details-carousel .owl-nav, .event-details .event-details-carousel .owl-dots {
   margin-top: 5px;
   text-align: left;
