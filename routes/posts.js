@@ -11,7 +11,7 @@ router.get("/",function(req,res){
 		var perPage = 6;
 		var pageQuery = parseInt(req.query.page);
 		var pageNumber = pageQuery ? pageQuery : 1;
-		Post.find({title: regex}).skip((perPage * pageNumber) - perPage).limit(perPage).exec(function (err, allPosts) {
+		Post.find({$or:[{title: regex}, {skills: regex}]}).skip((perPage * pageNumber) - perPage).limit(perPage).exec(function (err, allPosts) {
 			Post.countDocuments().exec(function (err, count) {
 				if (err) {
 					console.log(err);
