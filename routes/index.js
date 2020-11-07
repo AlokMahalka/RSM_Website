@@ -49,7 +49,7 @@ router.get("/register",function(req,res){
 router.post("/register",[
 		check("username")
 		.isLength({min:3 , max: 15}).withMessage("Username must be 3-15 characters long")
-		.isAlpha().withMessage('Username should only contain a-zA-Z'),
+		.isAlpha().withMessage('Username should only contain a-zA-Z(no spaces)'),
 		check("email")
 		.isEmail().withMessage("Email is not valid"),
 		check("regNo")
@@ -110,8 +110,9 @@ router.get('/verify-email', async(req,res,next) => {
 		user.emailToken = null;
 		user.isVerified = true;
 		await user.save();
-		await req.login(user, async(err) => {
-			if(err) return next(err);
+		req.login(user, async (err) => {
+			if (err)
+				return next(err);
 			const redirectUrl = req.session.redirectTo || '/';
 			delete req.session.redirectTo;
 			res.redirect(redirectUrl);

@@ -40,10 +40,10 @@
 			  <h3>Main Requirements</h3>
 			  <p>
 				<ul>
-					<li>Author: <%= post.name %> </li>
-					<li>No. of postions: <%= post.students %></li>
-					<li>Skills Required: <%= post.skills %></li>
-					<li>Last Date to Apply: <%= moment(post.endDate).format('LL') %></li>
+					<li><strong>Author:</strong> <%= post.name %> </li>
+					<li><strong>No. of postions:</strong> <%= post.students %></li>
+					<li><strong>Skills Required:</strong> <%= post.skills %></li>
+					<li><strong>Last Date to Apply:</strong> <%= moment(post.endDate).format('LL') %></li>
 				</ul>
 			  </p>
 
@@ -56,13 +56,12 @@
 		</div>
 		<div class="col-lg-4">
             <div class="sidebar">
-              <h3 class="sidebar-title">Search</h3>
-              <div class="sidebar-item search-form">
-                <form action="">
-                  <input type="text">
-                  <button type="submit"><i class="icofont-search"></i></button>
-                </form>
-              </div><!-- End sidebar search formn--> 
+				<h5 class="sidebar-title">Have suggestion on events or projects? Contct Us Here</h5>
+				<div class="sidebar-item tags">
+				  <ul>
+					<li><h2><a href="/#contact">Contact</a></h2></li>
+				  </ul>
+				</div>
             <% if(currentUser && currentUser.isAdmin){ %>  
               <h3 class="sidebar-title">Admin Functionalities</h3>
               <div class="sidebar-item tags">
