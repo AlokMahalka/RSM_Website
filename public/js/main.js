@@ -57,6 +57,7 @@
     }
   });
 
+
   // Mobile Navigation
   if ($('.nav-menu').length) {
     var $mobile_nav = $('.nav-menu').clone().prop({
@@ -119,6 +120,10 @@
     time: 1000
   });
 
+  $('.set-bg').each(function () {
+    var bg = $(this).data('setbg');
+    $(this).css('background-image', 'url(' + bg + ')');
+  });
 
   // Initi AOS
   function aos_init() {
