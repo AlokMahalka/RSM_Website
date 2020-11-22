@@ -14,117 +14,98 @@
       </div>
     </section><!-- End Blog Section -->
 
-    <!-- ======= Blog Section ======= -->
-    <section class="blog" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+    <section class="search-section">
       <div class="container">
-        <div class="row">
-
-          <div class="col-lg-4">
-            <div class="sidebar">
-              <h3 class="sidebar-title">Search</h3>
-              <div class="sidebar-item search-form">
+          <div class="row">
+              <div class="col-lg-4">
                 <form action="/posts" method="GET">
-                  <input type="text" name="search">
+                  <input type="text" name="search" placeholder="Search">
                   <button type="submit"><i class="icofont-search"></i></button>
                 </form>
-              </div><!-- End sidebar search formn--> 
-              <h5 class="sidebar-title">Have suggestion on events or projects? Contct Us Here</h5>
-              <div class="sidebar-item tags">
-                <ul>
-                  <li><h2><a href="/#contact">Contact</a></h2></li>
-                </ul>
               </div>
-              <% if(currentUser && currentUser.isAdmin){ %>  
-                <h3 class="sidebar-title">Admin Functionalities</h3>
-                <div class="sidebar-item tags">
-                  <ul>
-                    <li><h2><a href="/posts/new">Add</a></h2></li>
-                  </ul>
-                </div>
-              <% } %>  
-            </div><!-- End sidebar -->
-          </div><!-- End blog sidebar -->
+              <div class="col-lg-4 ml-auto">
+                <% if(currentUser && currentUser.isAdmin){ %>
+                  <div class="admin-section">
+                    <h4 class="text-white">Add a Project</h4>
+                    <a href="/posts/new">Add</a>
+                  </div>  
+                <% } %>  
+              </div>
+          </div>
+      </div>
+    </section>
 
-          <div class="col-lg-8 entries">
-          <% if(noMatch !== null) {%>
-            <div class="col-md-12">
-                  <%= noMatch %>
-            </div>
-          <% } %>
-          <% posts.forEach(function(post){ %>  
-            <article class="entry">
-              <div class="entry-img">
-                <img src="<%= post.image %>" alt="" class="img-fluid">
+    
+    <div class="blog blog-page spad">
+      <div class="container">
+          <div class="row">
+            <% posts.forEach(function(post){ %>
+              <div class="col-md-6">
+                  <div class="blog-item">
+                      <div class="blog-img">
+                          <img src="<%= post.image %>" alt="Blog">
+                      </div>
+                      <div class="blog-content">
+                          <h2 class="blog-title"><a href="/posts/<%= post._id %>"><%= post.title %></a></h2>
+                          <div class="blog-meta">
+                              <i class="bx bx-user"></i>
+                              <a href="/posts/<%= post._id %>"><%= post.name %></a>
+                              <i class="bx bx-calendar"></i>
+                              <p><%= moment(post.endDate).format('LL') %></p>
+                          </div>
+                          <div class="blog-text">
+                              <p>
+                                <%- post.descIntro %>...
+                              </p>
+                              <a class="btn" href="/posts/<%= post._id %>">Read More</a>
+                          </div>
+                      </div>
+                  </div>
               </div>
-              <h2 class="entry-title">
-                <a href="/posts/<%= post._id %>"><%= post.title %></a>
-              </h2>
-              <div class="entry-meta">
-                <ul>
-                  <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="/posts/<%= post._id %>"><%= post.name %></a></li>
-                  <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="/posts/<%= post._id %>"><%= moment(post.endDate).format('LL') %></a></li>
-                </ul>
-              </div>
-
-              <div class="entry-content">
-                <p><%- post.descIntro %>...</p>
-                <div class="read-more">
-                  <a href="/posts/<%= post._id %>">Read More</a>
-                </div>
-              </div>
-
-            </article><!-- End blog entry -->
-          <% }) %>  
-            <div class="blog-pagination">
+            <% }) %> 
+          </div>
+          <div class="row">
+            <div class="col-12">
               <% if (pages && pages > 0) { %>
-                <ul class="justify-content-center">
+                <ul class="pagination justify-content-center">
                     <% if (current == 1) { %>
-                    <li class="disabled"><a>First</a></li>
+                    <li class="page-item disabled"><a class="page-link"><i class="icofont-rounded-left"></i></a></li>
                     <% } else { %>
-                    <li><a href="/posts">First</a></li>
-                    <% } %>
-             
-                    <% if (current == 1) { %>
-                    <li class="disabled"><a><i class="icofont-rounded-left"></i></a></li>
-                    <% } else { %>
-                    <li><a href="/posts?page=<%= Number(current) - 1 %>"><i class="icofont-rounded-left"></i></a></li>
+                    <li class="page-item"><a class="page-link" href="/posts?page=<%= Number(current) - 1 %>"><i class="icofont-rounded-left"></i></a></li>
                     <% } %>
              
                     <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
                     <% if (i !== 1) { %>
-                    <li class="disabled"><a>...</a></li>
+                    <li class="page-item disabled"><a class="page-link">...</a></li>
                     <% } %>
                     <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
                     <% if (i == current) { %>
-                    <li class="active"><a><%= i %></a></li>
+                    <li class="page-item active"><a class="page-link"><%= i %></a></li>
                     <% } else { %>
-                    <li><a href="/posts?page=<%= i %>"><%= i %></a></li>
+                    <li class="page-item"><a class="page-link" href="/posts?page=<%= i %>"><%= i %></a></li>
                     <% } %>
                     <% if (i == Number(current) + 4 && i < pages) { %>
-                    <li class="disabled"><a>...</a></li>
+                    <li class="page-item disabled"><a class="page-link">...</a></li>
                     <% } %>
                     <% } %>
              
                     <% if (current == pages) { %>
-                    <li class="disabled"><a><i class="icofont-rounded-right"></i></a></li>
+                    <li class="page-itemdisabled"><a class="page-link"><i class="icofont-rounded-right"></i></a></li>
                     <% } else { %>
-                    <li><a href="/posts?page=<%= Number(current) + 1 %>"><i class="icofont-rounded-right"></i></a></li>
+                    <li class="page-item"><a class="page-link" href="/posts?page=<%= Number(current) + 1 %>"><i class="icofont-rounded-right"></i></a></li>
                     <% } %>
 
                     <% if (current == pages) { %>
-                    <li class="disabled"><a>Last</a></li>
+                    <li class="page-item disabled"><a class="page-link">Last</a></li>
                     <% } else { %>
-                    <li><a href="/posts?page=<%= pages %>">Last</a></li>
+                    <li class="page-item"><a class="page-link" href="/posts?page=<%= pages %>">Last</a></li>
                     <% } %>
                 </ul>
               <% } %>
             </div>
-          </div><!-- End blog entries list -->
-        </div><!-- End .row -->
-      </div><!-- End .container -->
-    </section><!-- End Blog Section -->
-  </main><!-- End #main -->
-<nav aria-label="Page navigation" class="blog-pagination">
-    
-</nav> 
-  
+          </div>
+      </div>
+  </div>
+
+          
+             

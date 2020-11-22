@@ -113,18 +113,48 @@
   $(window).on('load', function() {
     $('.venobox').venobox();
   });
-
+ 
   // jQuery counterUp
   $('[data-toggle="counter-up"]').counterUp({
     delay: 10,
     time: 1000
   });
 
-  $('.set-bg').each(function () {
-    var bg = $(this).data('setbg');
-    $(this).css('background-image', 'url(' + bg + ')');
-  });
+  $('.set-bg').each(function() {
+		var bg = $(this).data('setbg');
+		$(this).css('background-image', 'url(' + bg + ')');
+	});
 
+
+  var $slider = $('.hero-slider');
+	var SLIDER_TIMEOUT = 10000;
+
+	$slider.owlCarousel({
+		items: 1,
+		nav: false,
+		dots: false,
+		autoplay: true,
+		autoplayTimeout: SLIDER_TIMEOUT,
+		animateOut: 'fadeOut',
+   		animateIn: 'fadeIn',
+		loop: true,
+		onInitialized: ({target}) => {
+			var animationStyle = '-webkit-animation-duration'+ SLIDER_TIMEOUT +'ms;animation-duration:'+ SLIDER_TIMEOUT+'ms';
+			var progressBar = $('<div class="slider-progress-bar"><span class="progress" style='+ animationStyle +'></span></div>');
+			$(target).append(progressBar);
+		},
+		onChanged: ({type, target}) => {
+			if (type === 'changed') {
+				var $progressBar = $(target).find('.slider-progress-bar');
+				var clonedProgressBar = $progressBar.clone(true);
+
+				$progressBar.remove();
+				$(target).append(clonedProgressBar);
+			}
+		}
+  });
+  
+  
   // Initi AOS
   function aos_init() {
     AOS.init({
