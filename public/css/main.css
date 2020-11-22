@@ -1013,6 +1013,9 @@ Helper CSS
 --------------------------------------------------------------*/
 .blog {
   background-image: url("../img/uncompressed/bg-blue.jpg");
+  background-repeat: no-repeat;
+	background-size: cover;
+	background-position: top center;
   position: relative;
   width: 100%;
   padding: 45px 0;
@@ -1244,138 +1247,63 @@ Helper CSS
 }
 
 /*---------------------
-  Blog Details Hero
+  Blog Details
 -----------------------*/
-
-.blog-hero-section {
-	padding-top: 130px;
-	padding-bottom: 120px;
+.blog-details {
+  background-image: url("../img/uncompressed/bg-blue.jpg");
+  background-repeat: no-repeat;
+	background-size: cover;
+  background-position: top center;
 }
-
-.blog-hero-section .bh-text span {
-	font-size: 14px;
-	color: #ffffff;
-	text-transform: uppercase;
-	font-weight: 700;
-	background: #e32879;
-	padding: 5px 26px;
-}
-
-.blog-hero-section .bh-text h2 {
-	font-size: 60px;
-	color: #ffffff;
-	font-weight: 700;
-	line-height: 72px;
-	margin-top: 34px;
-	margin-bottom: 16px;
-}
-
-.blog-hero-section .bh-text ul li {
-	font-size: 14px;
-	color: #ffffff;
-	text-transform: uppercase;
-	letter-spacing: 1px;
-	margin-right: 45px;
-	display: inline-block;
-	list-style: none;
-	position: relative;
-}
-
-.blog-hero-section .bh-text ul li:after {
-	position: absolute;
-	right: -24px;
-	top: 4px;
-	width: 1px;
-	height: 15px;
-	background: #585658;
-	content: "";
-}
-
-.blog-hero-section .bh-text ul li:last-child {
-	margin-right: 0;
-}
-
-.blog-hero-section .bh-text ul li:last-child:after {
-	display: none;
-}
-
-/*--------------------------------------------------------------
-# Forms
---------------------------------------------------------------*/
-.new-edit-form {
-  padding-bottom: 30px;
-}
-
-.new-edit-form .info-box {
-  color: #444;
-  text-align: center;
-  box-shadow: 0 0 30px rgba(214, 215, 216, 0.6);
-  padding: 20px 0 30px 0;
+.blog__details__text {
+  margin-top: 15px;
   margin-bottom: 30px;
 }
-
-.new-edit-form .info-box i {
-  font-size: 32px;
-  color: #68A4C4;
-  border-radius: 50%;
-  padding: 8px;
-  border: 2px dotted #a2cce3;
+.blog__details__text p {
+  font-size: 18px;
+  line-height: 29px;
+  font-weight: 300;
+  margin-bottom: 20px;
 }
-
-.new-edit-form .info-box h3 {
-  font-size: 20px;
-  color: #666;
-  font-weight: 700;
-  margin: 10px 0;
+.blog__details__text p:last-child {
+  margin-bottom: 0;
 }
-
-.new-edit-form .info-box p {
-  padding: 0;
-  line-height: 24px;
-  font-size: 14px;
+.blog__details__desc {
+  margin-bottom: 50px;
+}
+.blog__details__desc li{
+  color: #ffffff;
+  font-size: 18px;
+  line-height:25px;
+  font-weight: 300;
+}
+.blog__details__desc p:last-child {
   margin-bottom: 0;
 }
 
-.new-edit-form .credit-form {
-  box-shadow: 0 0 30px rgba(214, 215, 216, 0.6);
-  padding: 30px;
-  margin-bottom: 30px;
+.blog__details__tags span {
+  display: inline-block;
+  font-size: 15px;
+  color: #ffffff;
+  font-weight: 300;
+  margin-right: 25px;
 }
-
-.new-edit-form .credit-form input, .new-edit-form .credit-form textarea {
-  border-radius: 0;
-  box-shadow: none;
-  font-size: 14px;
-}
-
-.new-edit-form .credit-form input::focus, .new-edit-form .credit-form textarea::focus {
-  background-color: #68A4C4;
-}
- 
-.new-edit-form .credit-form input {
-  padding: 20px 15px;
-}
-.new-edit-form .credit-form textarea {
-  padding: 12px 15px;
-}
-
-.new-edit-form .credit-form button[type="submit"] {
-  background: #68A4C4;
-  border: 0;
-  padding: 10px 24px;
-  color: #fff;
-  transition: 0.4s;
-}
-
-.new-edit-form .credit-form button[type="submit"]:hover {
-  background: #8dbad2;
+.blog__details__tags a {
+  font-size: 16px;
+  font-weight: 300;
+  color: #ffffff;
+  display: inline-block;
+  margin-right: 11px;
+  padding: 8px 15px 7px;
+  margin-bottom: 5px;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 /*--------------------------------------------------------------
 # Event
 --------------------------------------------------------------*/
 .event {
-  padding-bottom: 60px;
+  background: #222222ef;
 }
 
 .event .event-item {
@@ -1519,4 +1447,129 @@ Helper CSS
     position: static;
     margin-top: 30px;
   }
+}
+
+.register h4{
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.register-form input[type=text], input[type=email] , input[type=password]{
+	height: 50px;
+	width: 100%;
+	border: none;
+	font-size: 16px;
+	color: #b3b3b3;
+	padding-left: 20px;
+	background: #393939;
+	-webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+	margin-bottom: 30px;
+}
+
+.register-form input::-webkit-input-placeholder {
+	color: #b3b3b3;
+}
+
+.register-form input::-moz-placeholder {
+	color: #b3b3b3;
+}
+
+.register-form input:-ms-input-placeholder {
+	color: #b3b3b3;
+}
+
+.register-form input::-ms-input-placeholder {
+	color: #b3b3b3;
+}
+
+.register-form input::placeholder {
+	color: #b3b3b3;
+}
+
+.register-form input:focus {
+	background: #ffffff;
+	color: #0d0a27;
+}
+
+.register-form input:focus::-webkit-input-placeholder {
+	color: #0d0a27;
+}
+
+.register-form input:focus::-moz-placeholder {
+	color: #0d0a27;
+}
+
+.register-form input:focus:-ms-input-placeholder {
+	color: #0d0a27;
+}
+
+.register-form input:focus::-ms-input-placeholder {
+	color: #0d0a27;
+}
+
+.register-form input:focus::placeholder {
+	color: #0d0a27;
+}
+
+.register-form textarea {
+	width: 100%;
+	border: none;
+	font-size: 16px;
+	color: #b3b3b3;
+	padding-left: 20px;
+	background: #393939;
+	height: 110px;
+	padding-top: 12px;
+	resize: none;
+	-webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+	margin-bottom: 45px;
+}
+
+.register-form textarea::-webkit-input-placeholder {
+	color: #b3b3b3;
+}
+
+.register-form textarea::-moz-placeholder {
+	color: #b3b3b3;
+}
+
+.register-form textarea:-ms-input-placeholder {
+	color: #b3b3b3;
+}
+
+.register-form textarea::-ms-input-placeholder {
+	color: #b3b3b3;
+}
+
+.register-form textarea::placeholder {
+	color: #b3b3b3;
+}
+
+.register-form textarea:focus {
+	background: #ffffff;
+	color: #0d0a27;
+}
+
+.register-form textarea:focus::-webkit-input-placeholder {
+	color: #0d0a27;
+}
+
+.register-form textarea:focus::-moz-placeholder {
+	color: #0d0a27;
+}
+
+.register-form textarea:focus:-ms-input-placeholder {
+	color: #0d0a27;
+}
+
+.register-form textarea:focus::-ms-input-placeholder {
+	color: #0d0a27;
+}
+
+.register-form textarea:focus::placeholder {
+	color: #0d0a27;
 }
