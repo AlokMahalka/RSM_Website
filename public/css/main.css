@@ -383,7 +383,8 @@ Helper CSS
 }
 
 .mobile-nav a:hover, .mobile-nav .active > a, .mobile-nav li:hover > a {
-  color: #102dad;
+  background-color: #0d0d0d;
+  color: #BB86FC;
   text-decoration: none;
 }
 
