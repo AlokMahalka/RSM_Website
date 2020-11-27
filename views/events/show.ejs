@@ -30,6 +30,7 @@
               <% }else {%>  
               <li><strong>Date:</strong> <%= moment(event.onDate).format('LL') %></li>
               <li><strong>Time:</strong> <%= event.time %></li>
+              <li><strong>Type:</strong> <%= event.type %></li>
               <li><strong>Register Link:</strong><a href="<%= event.applyLink %>"> Click Here</a></li>
               <% } %>
             </ul>

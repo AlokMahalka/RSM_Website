@@ -24,7 +24,11 @@
         <% } else {%>
           <li class="drop-down"><a href="">Hello <%= currentUser.username%>!</a>
             <ul>
-              <li><a href="/logout">Logout</a></li>
+              <% if(currentUser.isAdmin){ %>
+                <a href="/posts/new">Add New Project</a>
+                <a href="/events/new">Add New Event</a>
+              <% } %>
+              <li><a href="/logout">Logout</a></li> 
             </ul>
           </li>
         <% } %>    

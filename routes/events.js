@@ -5,14 +5,24 @@ const middleware = require("../middleware");
 
 //SHOW
 router.get("/", function (req, res) {
-    Event.find({}, function (err, allEvents){
-        if (err) {
-            console.log(err);
-        } else {
-            res.render("events/index", {events: allEvents});
-        }
-    });
+	var perPage = 12;
+	var pageQuery = parseInt(req.query.page);
+	var pageNumber = pageQuery ? pageQuery : 1;
+    Event.find({},{'_id': 0,}, {sort: '-onDate'}).skip((perPage*pageNumber)-perPage).limit(perPage).exec(function (err, allEvents){
+		Event.countDocuments().exec(function(err,count){
+			if(err){
+				console.log(err);
+			}else{
+				res.render("events/index", {
+					events: allEvents,
+					current:pageNumber,
+					pages: Math.ceil(count / perPage)
+				});
+			}
+		});
+	});
 });
+ 
 
 //NEW 
 router.post("/",middleware.isLoggedIn,middleware.isAnAdmin,function(req,res){

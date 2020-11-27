@@ -154,6 +154,22 @@
 		}
   });
   
+
+  $(window).on('load', function() {
+    var eventIsotope = $('.event-container').isotope({
+      layoutMode: 'fitRows'
+    });
+
+    $('#event-flters li').on('click', function() {
+      $("#event-flters li").removeClass('filter-active');
+      $(this).addClass('filter-active');
+
+      eventIsotope.isotope({
+        filter: $(this).data('filter')
+      });
+      aos_init();
+    });
+  });
   
   // Initi AOS
   function aos_init() {

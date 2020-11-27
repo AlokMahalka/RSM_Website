@@ -11,7 +11,8 @@ const eventSchema = new mongoose.Schema({
 	isOver: {
 		type:Boolean,
 		default: false 
-	}
+	},
+	type:String
 });
 
 module.exports = mongoose.model("Event",eventSchema);

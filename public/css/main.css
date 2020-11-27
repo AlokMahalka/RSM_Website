@@ -136,8 +136,8 @@ ol {
 }
 
 .spad {
-	padding-top: 100px;
-	padding-bottom: 100px;
+	padding-top: 50px;
+	padding-bottom: 50px;
 }
 
 /*---------------------
@@ -146,14 +146,14 @@ Helper CSS
 
  .section-title {
 	text-align: center;
-	margin-bottom: 60px;
+  margin-bottom: 60px;
+  padding-top: 14px;
 }
 
 .section-title h2 {
 	font-size: 45px;
 	color: #ffffff;
 	font-weight: 700;
-	margin-top: 14px;
 }
 
 .set-bg {
@@ -1314,6 +1314,32 @@ Helper CSS
   position: relative;
   border-radius: 4px;
   margin: 0 0 30px 0;
+}
+
+.event #event-flters {
+  padding: 0;
+  margin: 0 0 35px 0;
+  list-style: none;
+  text-align: center;
+}
+
+.event #event-flters li {
+  cursor: pointer;
+  margin: 0 12px 5px 12px;
+  display: inline-block;
+  padding: 0 4px 6px 4px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #606060;
+  transition: all 0.3s ease-in-out;
+  border-bottom: 2px solid #222222ef;
+  font-family: "Roboto", sans-serif;
+}
+
+.event #event-flters li:hover, .event #event-flters li.filter-active {
+  border-color: #68A4C4;
+  color: #68A4C4;
 }
 
 .event .event-item img {

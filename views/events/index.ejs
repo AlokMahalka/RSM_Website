@@ -13,15 +13,26 @@
         </div>
     </section>
 
-    <section class="event">
+    <section class="event spad">
       <div class="container">
         <div class="section-title">
-          <h2>Upcoming Events</h2>
+          <h2>Our Events</h2>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <ul id="event-flters">
+              <li data-filter="*" class="filter-active">All</li>
+              <li data-filter=".Birds-of-Feather">Birds of Feather</li>
+              <li data-filter=".Alumini-Webinar">Alumini Webinar</li>
+              <li data-filter=".Breakout">Breakout Sessions</li>
+              <li data-filter=".Paper-Discussion">Paper Discussion</li>
+            </ul>
+          </div>
         </div>
         <div class="row event-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
         <% events.forEach(function(event){ %>
         <%  if((event.onDate) > Date.now()){ %>  
-          <div class="col-lg-4 col-md-6">
+          <div class="col-lg-4 col-md-6 <%= event.type %>">
             <div class="event-item">
               <img src="<%= event.image %>" class="img-fluid" alt="">
               <div class="event-info">
@@ -33,20 +44,8 @@
               </div>
             </div>
           </div>
-        <% }}) %>  
-        </div>
-      </div>
-    </section>  
-
-    <section class="event">
-      <div class="container">
-        <div class="section-title">
-          <h2>Past Events</h2>
-        </div>
-        <div class="row event-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
-        <% events.forEach(function(event){ %>
-        <%  if((event.onDate) < Date.now()){ event.isOver = true ;%>  
-          <div class="col-lg-4 col-md-6">
+        <% } else if((event.onDate) < Date.now()){ event.isOver = true ;%>  
+          <div class="col-lg-4 col-md-6 <%= event.type %>">
             <div class="event-item">
               <img src="<%= event.image %>" class="img-fluid" alt="">
               <div class="event-info">
@@ -57,11 +56,42 @@
               </div>
             </div>
           </div>
-        <% }}) %>  
+        <% }}) %>
         </div>
-        <a class="btn btn-primary" href="/events/new">Add New Event</a>
+        <div class="row">
+          <div class="col-12">
+            <% if (pages && pages > 0) { %>
+              <ul class="pagination justify-content-center">
+                  <% if (current == 1) { %>
+                  <li class="page-item disabled"><a class="page-link"><i class="icofont-rounded-left"></i></a></li>
+                  <% } else { %>
+                  <li class="page-item"><a class="page-link" href="/events?page=<%= Number(current) - 1 %>"><i class="icofont-rounded-left"></i></a></li>
+                  <% } %>
+           
+                  <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+                  <% if (i !== 1) { %>
+                  <li class="page-item disabled"><a class="page-link">...</a></li>
+                  <% } %>
+                  <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+                  <% if (i == current) { %>
+                  <li class="page-item active"><a class="page-link"><%= i %></a></li>
+                  <% } else { %>
+                  <li class="page-item"><a class="page-link" href="/events?page=<%= i %>"><%= i %></a></li>
+                  <% } %>
+                  <% if (i == Number(current) + 4 && i < pages) { %>
+                  <li class="page-item disabled"><a class="page-link">...</a></li>
+                  <% } %>
+                  <% } %>
+           
+                  <% if (current == pages) { %>
+                  <li class="page-itemdisabled"><a class="page-link"><i class="icofont-rounded-right"></i></a></li>
+                  <% } else { %>
+                  <li class="page-item"><a class="page-link" href="/events?page=<%= Number(current) + 1 %>"><i class="icofont-rounded-right"></i></a></li>
+                  <% } %>
+              </ul>
+            <% } %>
+          </div>
+        </div>
       </div>
-    </section> 
-    
-
+    </section>  
 </main>
