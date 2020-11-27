@@ -8,7 +8,7 @@ router.get("/", function (req, res) {
 	var perPage = 12;
 	var pageQuery = parseInt(req.query.page);
 	var pageNumber = pageQuery ? pageQuery : 1;
-    Event.find({},{'_id': 0,}, {sort: '-onDate'}).skip((perPage*pageNumber)-perPage).limit(perPage).exec(function (err, allEvents){
+    Event.find({}).sort({onDate: -1}).skip((perPage*pageNumber)-perPage).limit(perPage).exec(function (err, allEvents){
 		Event.countDocuments().exec(function(err,count){
 			if(err){
 				console.log(err);
