@@ -20,22 +20,20 @@ router.get("/sentEmail", function(req,res){
 
 router.post('/sendemail', function(req,res){
 	const { name, email, subject, message} = req.body;
-	const from = 'alokmahalka1234@gmail.com';
-	const to = 'draxkiller29@gmail.com';
+	const from = 'noreply.rsmanipal@gmail.com';
+	const to = 'researchsociety.manipal@gmail.com';
 	const desc = `${subject}`;
 	const output = `
     <p>You have a new Contact Request</p>
     <h3>Contact Details</h3>
     <ul>
       <li>Name: ${name}</li>
-      <li>Subject ${subject}</li>
-	  <li>Email: ${email}</li>
 	  <li>Message: ${message}</li>
     </ul>
   `;
 
   sendEmail(to,from,desc,output);
-  res.redirect('sent');
+  res.redirect('sentFeedback');
 });
 
 router.get("/teams",function(req,res){
@@ -81,7 +79,7 @@ router.post("/register",[
 					return res.redirect('register');
 				}else{
 						const to  = user.email;
-						const from = 'alokmahalka1234@gmail.com';
+						const from = 'noreply.rsmanipal@gmail.com';
 						const subject = 'Research Society Email Verifcation';
 						const output = ` 
 						<h1>Welcome to Research Society!</h1>

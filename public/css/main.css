@@ -93,6 +93,7 @@ ol {
   width: 100%;
 }
 .primary-btn:hover:after {
+  color: #ffffff !important;
   height: 100%;
   width: 100%;
 }
@@ -135,8 +136,19 @@ ol {
 	border: 1px solid #0049e7;
 }
 
+.site-btn-2 {
+  font-size: 16px;
+  font-weight: 300;
+  color: #ffffff;
+  display: inline-block;
+  margin-right: 11px;
+  padding: 8px 15px 7px;
+  margin-bottom: 5px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
 .spad {
-	padding-top: 100px;
+	padding-top: 75px;
 	padding-bottom: 100px;
 }
 .spade {
@@ -609,6 +621,13 @@ Helper CSS
 	background-repeat: no-repeat;
 	background-size: contain;
 }
+
+@media (max-width: 768px) {
+  .work-steps:after {
+    background-image: none;
+  } 
+}
+
 
 .work-step-box {
 	text-align: center;
@@ -1473,12 +1492,16 @@ Helper CSS
 @media (max-width: 768px) {
   .event-details .event-description h2 {
     width: 100%;
-  }
+  } 
   .event-details .event-info {
     position: static;
     margin-top: 30px;
   }
 }
+
+
+/*-----------------------------------------------------------------------------------*/
+
 
 .register h4{
   text-align: center;
@@ -1532,10 +1555,6 @@ Helper CSS
 	color: #0d0a27;
 }
 
-.register-form input:focus:-ms-input-placeholder {
-	color: #0d0a27;
-}
-
 .register-form input:focus::-ms-input-placeholder {
 	color: #0d0a27;
 }
@@ -1543,15 +1562,82 @@ Helper CSS
 .register-form input:focus::placeholder {
 	color: #0d0a27;
 }
+/*-----------------------------------------------------------------------------------*/
 
-.register-form textarea {
+.new-edit-form {
+  background-image: url("../img/uncompressed/bg-blue.jpg");
+  background-repeat: no-repeat;
+	background-size: cover;
+	background-position: top center;
+  position: relative;
+  width: 100%;
+  padding: 45px 0;
+  opacity: 0.95;
+}
+
+.new-edit-form input[type=text],input[type=email],input[type=password],input[type=number],input[type=date],input[type=time]{
+	height: 50px;
 	width: 100%;
 	border: none;
 	font-size: 16px;
 	color: #b3b3b3;
 	padding-left: 20px;
 	background: #393939;
-	height: 110px;
+	-webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+	margin-bottom: 30px;
+}
+
+.new-edit-form input::-webkit-input-placeholder {
+	color: #b3b3b3;
+}
+
+.new-edit-form input::-moz-placeholder {
+	color: #b3b3b3;
+}
+
+.new-edit-form input:-ms-input-placeholder {
+	color: #b3b3b3;
+}
+
+.new-edit-form input::-ms-input-placeholder {
+	color: #b3b3b3;
+}
+
+.new-edit-form input::placeholder {
+	color: #b3b3b3;
+}
+
+.new-edit-form input:focus {
+	background: #ffffff;
+	color: #0d0a27;
+}
+
+.new-edit-form input:focus::-webkit-input-placeholder {
+	color: #0d0a27;
+}
+
+.new-edit-form input:focus::-moz-placeholder {
+	color: #0d0a27;
+}
+
+.new-edit-form input:focus::-ms-input-placeholder {
+	color: #0d0a27;
+}
+
+.new-edit-form input:focus::placeholder {
+	color: #0d0a27;
+}
+
+.new-edit-form textarea {
+	width: 100%;
+	border: none;
+	font-size: 16px;
+	color: #b3b3b3;
+	padding-left: 20px;
+	background: #393939;
+	height: 200px;
 	padding-top: 12px;
 	resize: none;
 	-webkit-transition: all 0.3s;
@@ -1560,47 +1646,106 @@ Helper CSS
 	margin-bottom: 45px;
 }
 
-.register-form textarea::-webkit-input-placeholder {
+.new-edit-form textarea::-webkit-input-placeholder {
 	color: #b3b3b3;
 }
 
-.register-form textarea::-moz-placeholder {
+.new-edit-form textarea::-moz-placeholder {
 	color: #b3b3b3;
 }
 
-.register-form textarea:-ms-input-placeholder {
+.new-edit-form textarea:-ms-input-placeholder {
 	color: #b3b3b3;
 }
 
-.register-form textarea::-ms-input-placeholder {
+.new-edit-form textarea::-ms-input-placeholder {
 	color: #b3b3b3;
 }
 
-.register-form textarea::placeholder {
+.new-edit-form textarea::placeholder {
 	color: #b3b3b3;
 }
 
-.register-form textarea:focus {
+.new-edit-form textarea:focus {
 	background: #ffffff;
 	color: #0d0a27;
 }
 
-.register-form textarea:focus::-webkit-input-placeholder {
+.new-edit-form textarea:focus::-webkit-input-placeholder {
 	color: #0d0a27;
 }
 
-.register-form textarea:focus::-moz-placeholder {
+.new-edit-form textarea:focus::-moz-placeholder {
 	color: #0d0a27;
 }
 
-.register-form textarea:focus:-ms-input-placeholder {
+.new-edit-form textarea:focus:-ms-input-placeholder {
 	color: #0d0a27;
 }
 
-.register-form textarea:focus::-ms-input-placeholder {
+.new-edit-form textarea:focus::-ms-input-placeholder {
 	color: #0d0a27;
 }
 
-.register-form textarea:focus::placeholder {
+.new-edit-form textarea:focus::placeholder {
+	color: #0d0a27;
+}
+
+.new-edit-form select {
+	height: 50px;
+	width: 100%;
+	border: none;
+	font-size: 16px;
+	color: #b3b3b3;
+	padding-left: 20px;
+	background: #393939;
+	-webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+	margin-bottom: 30px;
+}
+
+.new-edit-form select::-webkit-input-placeholder {
+	color: #b3b3b3;
+}
+
+.new-edit-form select::-moz-placeholder {
+	color: #b3b3b3;
+}
+
+.new-edit-form select:-ms-input-placeholder {
+	color: #b3b3b3;
+}
+
+.new-edit-form select::-ms-input-placeholder {
+	color: #b3b3b3;
+}
+
+.new-edit-form select::placeholder {
+	color: #b3b3b3;
+}
+
+.new-edit-form select:focus {
+	background: #ffffff;
+	color: #0d0a27;
+}
+
+.new-edit-form select:focus::-webkit-input-placeholder {
+	color: #0d0a27;
+}
+
+.new-edit-form select:focus::-moz-placeholder {
+	color: #0d0a27;
+}
+
+.new-edit-form select:focus:-ms-input-placeholder {
+	color: #0d0a27;
+}
+
+.new-edit-form select:focus::-ms-input-placeholder {
+	color: #0d0a27;
+}
+
+.new-edit-form select:focus::placeholder {
 	color: #0d0a27;
 }
