@@ -2,6 +2,9 @@ const express = require("express");
 const router = express.Router({mergeParams:true });
 const Post = require("../models/post");
 const middleware = require("../middleware");
+const multer = require("multer");
+const { storage } = require('../cloudinary');
+const upload = multer({storage})
 
 //SHOW
 router.get("/",function(req,res){
@@ -51,8 +54,10 @@ router.get("/",function(req,res){
 });
 
 //NEW 
-router.post("/",middleware.isLoggedIn,middleware.isAnAdmin,function(req,res){
+router.post("/",middleware.isLoggedIn,middleware.isAnAdmin,upload.array('image'),function(req,res){
 	const newpost = req.body;
+	newpost.images = req.files.map(f => ({url: f.path , filename: f.filename}));
+	console.log(newpost);
 	Post.create(newpost,function(err,newlyCreated){
 		if(err){
 			console.log(err);

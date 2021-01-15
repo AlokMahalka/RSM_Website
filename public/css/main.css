@@ -1575,7 +1575,7 @@ Helper CSS
   opacity: 0.95;
 }
 
-.new-edit-form input[type=text],input[type=email],input[type=password],input[type=number],input[type=date],input[type=time]{
+.new-edit-form input[type=text],input[type=email],input[type=password],input[type=number],input[type=date],input[type=time],input[type=file]{
 	height: 50px;
 	width: 100%;
 	border: none;

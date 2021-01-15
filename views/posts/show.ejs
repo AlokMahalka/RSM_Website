@@ -19,7 +19,9 @@
 		<div class="row d-flex justify-content-center">
 			<div class="col-lg-8">
 				<div class="d-flex justify-content-center">
-					<img src="<%= post.image %>" alt="" class="img-fluid">
+					<% for(let img of post.images){ %> 
+						<img src="<%=img.url %>" alt="" class="img-fluid">
+					<% } %> 
 				</div>
 				<div class="blog__details__content">
 					<div class="blog__details__text">
