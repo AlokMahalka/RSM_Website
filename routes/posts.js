@@ -4,7 +4,7 @@ const Post = require("../models/post");
 const middleware = require("../middleware");
 const multer = require("multer");
 const { storage } = require('../cloudinary');
-const upload = multer({storage})
+const upload = multer({storage});
 
 //SHOW
 router.get("/",function(req,res){
@@ -57,7 +57,6 @@ router.get("/",function(req,res){
 router.post("/",middleware.isLoggedIn,middleware.isAnAdmin,upload.array('image'),function(req,res){
 	const newpost = req.body;
 	newpost.images = req.files.map(f => ({url: f.path , filename: f.filename}));
-	console.log(newpost);
 	Post.create(newpost,function(err,newlyCreated){
 		if(err){
 			console.log(err);
@@ -101,6 +100,16 @@ router.put("/:id",middleware.isAnAdmin,function(req,res){
 			res.redirect("/post");
 		}else{
 			res.redirect("/posts/"+req.params.id);
+		}
+	});
+});
+
+router.get("/:id/apply",middleware.isAnAdmin,function(req,res){
+	Post.findById(req.params.id,function(err,foundPost){
+		if(err){
+			res.redirect("/posts");
+		} else{
+			res.render("posts/apply",{post:foundPost});
 		}
 	});
 });

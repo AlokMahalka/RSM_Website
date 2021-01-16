@@ -27,7 +27,8 @@ router.post('/sendemail', function(req,res){
     <p>You have a new Contact Request</p>
     <h3>Contact Details</h3>
     <ul>
-      <li>Name: ${name}</li>
+	  <li>Name: ${name}</li>
+	  <li>Email: ${email}</li>
 	  <li>Message: ${message}</li>
     </ul>
   `;

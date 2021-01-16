@@ -39,7 +39,7 @@
 						  </p>
 					</div>
 					<div class="blog__details__tags">
-						<a href="#">Apply</a>
+						<a href="/posts/<%= post._id %>/apply">Apply</a>
 						<% if(currentUser && currentUser.isAdmin){ %>
 							<a href="/posts/<%= post._id %>/edit">Edit</a>
 						<% } %> 	

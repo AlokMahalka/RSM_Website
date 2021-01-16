@@ -1,0 +1,88 @@
+<% layout('layouts/boilerplate')%>
+
+<section class="apply-form spade" id="apply-form">
+    <div class="container mt-5">
+      <div class="section-title">
+        <h2>Apply for <%=post.title%> </h2>
+      </div>
+      <div class="row">
+        <div class="col-lg-3">
+        </div>
+        <div class="col-lg-6">
+          <form action="/apply" method="post" role="apply-form" class="credit-form" novalidate>
+            <div class="form-row">
+              <div class="col-md-6 form-group">
+                <input type="text" name="name" class="form-control" id="name" value="<%=currentUser.username%>" required/>
+                <div class="invalid-feedback">
+                  Please Enter Your Name
+                </div>
+              </div>
+              <div class="col-md-6 form-group">
+                <input type="email" class="form-control" name="email" id="email" value="<%=currentUser.email%> " required/>
+                <div class="invalid-feedback">
+                  Please Provide Your Email ID
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 form-group">
+                  <input type="number" name="regNo" class="form-control" id="regNo" value="<%= currentUser.regNo %>" required/>
+                  <div class="invalid-feedback">
+                    Your Registration Number
+                  </div>
+                </div>
+                <div class="col-md-6 form-group">
+                  <input type="text" class="form-control" name="link" id="link" placeholder="Link to Github/LinkedIn" required/>
+                  <div class="invalid-feedback">
+                    Please provide for further evaluation
+                  </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="branch" class="form-control" id="branch" placeholder="Your Branch" required/>
+                  <div class="invalid-feedback">
+                    Which Branch are you in?
+                  </div>
+                </div>
+                <div class="col-md-6 form-group">
+                  <input type="tel" class="form-control" name="phone" id="phone" placeholder="Contact No." pattern="[0-9]{10}" required/>
+                  <div class="invalid-feedback">
+                    How will we contact you ?
+                  </div>
+                </div>
+            </div>       
+            <div class="form-group">
+              <input type="text" class="form-control form-control-lg" name="profname" id="profname" placeholder="Name and details of the prof. you have worked with(NA if none)" required/>
+              <div class="invalid-feedback">
+                Which branch are you in? 
+              </div>
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" name="researchexp" rows="8" placeholder="Prior Research Experience(NA if none)" required></textarea>
+                <div class="invalid-feedback">
+                  Plese don't leave this field empty.
+                </div>
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" name="technincalexp" rows="8" placeholder="Prior Technical Experience(Projects,Courses etc.) " required></textarea>
+                <div class="invalid-feedback">
+                    Plese don't leave this field empty.
+                </div>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" name="desc" rows="8" placeholder="Why do you wanna join the Research Society?" required></textarea>
+              <div class="invalid-feedback">
+                Please provide an answer.
+              </div>
+            </div>
+            <div class="text-center"><button type="submit" class="site-btn">Apply</button></div>
+          </form>
+          <a href="/posts" class="site-btn-2">Go Back</a>
+        </div>
+        <div class="col-lg-3">
+        </div>
+
+      </div>
+    </div>
+</section>

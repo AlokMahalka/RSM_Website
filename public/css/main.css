@@ -1749,3 +1749,192 @@ Helper CSS
 .new-edit-form select:focus::placeholder {
 	color: #0d0a27;
 }
+
+
+/*-----------------------------------------------------------------------------------------------------------*/
+
+.apply-form {
+  background-image: url("../img/uncompressed/bg-blue.jpg");
+  background-repeat: no-repeat;
+	background-size: cover;
+	background-position: top center;
+  position: relative;
+  width: 100%;
+  padding: 45px 0;
+  opacity: 0.95;
+}
+
+.apply-form input[type=text],input[type=email],input[type=number],input[type=tel]{
+	height: 50px;
+	width: 100%;
+	border: none;
+	font-size: 16px;
+	color: #b3b3b3;
+	padding-left: 20px;
+	background: #393939;
+	-webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+	margin-bottom: 30px;
+}
+
+.apply-form input::-webkit-input-placeholder {
+	color: #b3b3b3;
+}
+
+.apply-form input::-moz-placeholder {
+	color: #b3b3b3;
+}
+
+.apply-form input:-ms-input-placeholder {
+	color: #b3b3b3;
+}
+
+.apply-form input::-ms-input-placeholder {
+	color: #b3b3b3;
+}
+
+.apply-form input::placeholder {
+	color: #b3b3b3;
+}
+
+.apply-form input:focus {
+	background: #ffffff;
+	color: #0d0a27;
+}
+
+.apply-form input:focus::-webkit-input-placeholder {
+	color: #0d0a27;
+}
+
+.apply-form input:focus::-moz-placeholder {
+	color: #0d0a27;
+}
+
+.apply-form input:focus::-ms-input-placeholder {
+	color: #0d0a27;
+}
+
+.apply-form input:focus::placeholder {
+	color: #0d0a27;
+}
+
+.apply-form textarea {
+	width: 100%;
+	border: none;
+	font-size: 16px;
+	color: #b3b3b3;
+	padding-left: 20px;
+	background: #393939;
+	height: 200px;
+	padding-top: 12px;
+	resize: none;
+	-webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+	margin-bottom: 45px;
+}
+
+.apply-form textarea::-webkit-input-placeholder {
+	color: #b3b3b3;
+}
+
+.apply-form textarea::-moz-placeholder {
+	color: #b3b3b3;
+}
+
+.apply-form textarea:-ms-input-placeholder {
+	color: #b3b3b3;
+}
+
+.apply-form textarea::-ms-input-placeholder {
+	color: #b3b3b3;
+}
+
+.apply-form textarea::placeholder {
+	color: #b3b3b3;
+}
+
+.apply-form textarea:focus {
+	background: #ffffff;
+	color: #0d0a27;
+}
+
+.apply-form textarea:focus::-webkit-input-placeholder {
+	color: #0d0a27;
+}
+
+.apply-form textarea:focus::-moz-placeholder {
+	color: #0d0a27;
+}
+
+.apply-form textarea:focus:-ms-input-placeholder {
+	color: #0d0a27;
+}
+
+.apply-form textarea:focus::-ms-input-placeholder {
+	color: #0d0a27;
+}
+
+.apply-form textarea:focus::placeholder {
+	color: #0d0a27;
+}
+
+.apply-form select {
+	height: 50px;
+	width: 100%;
+	border: none;
+	font-size: 16px;
+	color: #b3b3b3;
+	padding-left: 20px;
+	background: #393939;
+	-webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+	margin-bottom: 30px;
+}
+
+.apply-form select::-webkit-input-placeholder {
+	color: #b3b3b3;
+}
+
+.apply-form select::-moz-placeholder {
+	color: #b3b3b3;
+}
+
+.apply-form select:-ms-input-placeholder {
+	color: #b3b3b3;
+}
+
+.apply-form select::-ms-input-placeholder {
+	color: #b3b3b3;
+}
+
+.apply-form select::placeholder {
+	color: #b3b3b3;
+}
+
+.apply-form select:focus {
+	background: #ffffff;
+	color: #0d0a27;
+}
+
+.apply-form select:focus::-webkit-input-placeholder {
+	color: #0d0a27;
+}
+
+.apply-form select:focus::-moz-placeholder {
+	color: #0d0a27;
+}
+
+.apply-form select:focus:-ms-input-placeholder {
+	color: #0d0a27;
+}
+
+.apply-form select:focus::-ms-input-placeholder {
+	color: #0d0a27;
+}
+
+.apply-form select:focus::placeholder {
+	color: #0d0a27;
+}
