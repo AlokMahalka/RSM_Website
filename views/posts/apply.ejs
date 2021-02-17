@@ -9,7 +9,7 @@
         <div class="col-lg-3">
         </div>
         <div class="col-lg-6">
-          <form action="/apply" method="post" role="apply-form" class="credit-form" novalidate>
+          <form action="/applyform" method="post" role="apply-form" class="credit-form" novalidate>
             <div class="form-row">
               <div class="col-md-6 form-group">
                 <input type="text" name="name" class="form-control" id="name" value="<%=currentUser.username%>" required/>
@@ -71,7 +71,7 @@
                 </div>
             </div>
             <div class="form-group">
-              <textarea class="form-control" name="desc" rows="8" placeholder="Why do you wanna join the Research Society?" required></textarea>
+              <textarea class="form-control" name="descrip" rows="8" placeholder="Why do you wanna join the Research Society?" required></textarea>
               <div class="invalid-feedback">
                 Please provide an answer.
               </div>

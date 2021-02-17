@@ -35,9 +35,7 @@
               <div class="col-md-6">
                   <div class="blog-item">
                       <div class="blog-img">
-                        <% for(let img of post.images){ %> 
-                          <img src="<%=img.url %>" alt="Blog" class="img-fluid">
-                        <% } %> 
+                        <img src="<%=post.image %>" alt="Blog" class="img-fluid"> 
                       </div>
                       <div class="blog-content">
                           <h2 class="blog-title"><a href="/posts/<%= post._id %>"><%= post.title %></a></h2>

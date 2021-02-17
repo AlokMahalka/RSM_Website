@@ -43,7 +43,7 @@ router.get("/new",middleware.isLoggedIn,middleware.isAnAdmin, function(req,res){
 
 
 //Show one post
-router.get("/:id",middleware.isLoggedIn,function(req,res){
+router.get("/:id",function(req,res){
 	Event.findById(req.params.id,function(err,foundEvent){
 		if(err){
 			console.log(err);

@@ -1,4 +1,5 @@
 /data
 /node_modules
 /Moderna
+/public/img
 .env
