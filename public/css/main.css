@@ -598,7 +598,7 @@ Helper CSS
 /*--------------------------------------------------------------
 # Our Services
 --------------------------------------------------------------*/
-.work-steps-section {
+/* .work-steps-section {
 	background: #1c1c1c;
 	padding: 118px 0 120px;
   overflow: hidden;
@@ -677,6 +677,153 @@ Helper CSS
   font-size: 20px;
   padding-right: 4px;
   color: #68A4C4;
+} */
+.about{
+  background: #1c1c1c;
+	padding: 85px 0 25px;
+  overflow: hidden;
+  opacity: 0.95;
+}
+
+.about .content h3 {
+  font-weight: 600;
+  font-size: 26px;
+}
+
+.about .content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.about .content ul li {
+  padding-left: 28px;
+  position: relative;
+}
+
+.about .content ul li + li {
+  margin-top: 10px;
+}
+
+.about .content ul i {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  font-size: 20px;
+  color: #000000;
+  line-height: 1;
+}
+
+.about .content p:last-child {
+  margin-bottom: 0;
+}
+
+.about .content .btn-learn-more {
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 12px 32px;
+  border-radius: 50px;
+  transition: 0.3s;
+  line-height: 1;
+  color: #000000;
+  -webkit-animation-delay: 0.8s;
+  animation-delay: 0.8s;
+  margin-top: 6px;
+  border: 2px solid #000000;
+}
+
+.about .content .btn-learn-more:hover {
+  background: #000000;
+  color: #fff;
+  text-decoration: none;
+}
+
+.services{
+  background: #1c1c1c;
+	padding: 20px 0 50px;
+  overflow: hidden;
+  opacity: 0.95;
+}
+
+.services .icon-box {
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 0 29px 0 rgba(68, 88, 144, 0.12);
+  transition: all 0.3s ease-in-out;
+  border-radius: 8px;
+  z-index: 1;
+}
+
+.services .icon-box::before {
+  content: '';
+  position: absolute;
+  background: #0d11e4;
+  right: -60px;
+  top: -40px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  transition: all 0.3s;
+  z-index: -1;
+}
+
+.services .icon-box:hover::before {
+  background: #0d11e4;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0px;
+}
+
+.services .icon {
+  margin: 0 auto 20px auto;
+  padding-top: 10px;
+  display: inline-block;
+  text-align: center;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  background: #000000;
+  transition: all 0.3s ease-in-out;
+}
+
+.services .icon i {
+  font-size: 36px;
+  line-height: 1;
+  color: #fff;
+}
+
+.services .title {
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.services .title a {
+  color: #111;
+}
+
+.services .description {
+  font-size: 15px;
+  line-height: 28px;
+  margin-bottom: 0;
+}
+
+.services .icon-box:hover .title a, .services .icon-box:hover .description {
+  color: #fff;
+}
+
+.services .icon-box:hover .icon {
+  background: #fff;
+}
+
+.services .icon-box:hover .icon i {
+  color: #000000;
 }
 
 /*--------------------------------------------------------------
@@ -1441,49 +1588,55 @@ Helper CSS
   transform: scale(1.1);
 }
 
-.event .event-item:hover .event-info {
+.event:hover .event-info {
   opacity: 1;
   top: calc(50% - 30px);
+}
+
+.event .pagination {
+  margin-bottom: 0;
+}
+
+.event .pagination .page-link {
+  margin-top: -30px;
+  color: #092a49;
+  border-radius: 0;
+  border-color: #092a49;
+}
+
+.event .pagination .page-link:hover,
+.event .pagination .page-item.active .page-link {
+  color: #0796fe;
+  background: #092a49;
+}
+
+.event .pagination .disabled .page-link {
+  color: #999999;
 }
 
 /*--------------------------------------------------------------
 # Event Details
 --------------------------------------------------------------*/
 .event-details {
-  padding-top: 40px;
+  background-image: url("../img/uncompressed/bg-blue.jpg");
+  background-repeat: no-repeat;
+	background-size: cover;
+	background-position: top center;
+  position: relative;
+  width: 100%;
+  padding: 45px 0;
+  opacity: 0.95;
 }
 
 .event-details .event-details-container {
   position: relative;
 }
 
-.event-details .event-details-carousel {
-  position: relative;
-  z-index: 1;
+.event-details img{
+  height: 400px;
+  width: calc(90% - 25px);
+  overflow: hidden;
 }
-
-.event-details .owl-carousel{
-  display: block;
-}
-
-.event-details .event-details-carousel .owl-nav, .event-details .event-details-carousel .owl-dots {
-  margin-top: 5px;
-  text-align: left;
-}
-
-.event-details .event-details-carousel .owl-dot {
-  display: inline-block;
-  margin: 0 10px 0 0;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: #ddd !important;
-}
-
-.event-details .event-details-carousel .owl-dot.active {
-  background-color: #68A4C4 !important;
-}
-
 .event-details .event-info {
   padding: 30px;
   position: absolute;
@@ -1534,6 +1687,10 @@ Helper CSS
   .event-details .event-info {
     position: static;
     margin-top: 30px;
+  }
+
+  .event-details img{
+    width:100%;
   }
 }
 

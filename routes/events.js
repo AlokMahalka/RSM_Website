@@ -45,6 +45,7 @@ router.get("/new",middleware.isLoggedIn,middleware.isAnAdmin, function(req,res){
 //Show one post
 router.get("/:id",function(req,res){
 	Event.findById(req.params.id,function(err,foundEvent){
+		if(foundEvent.onDate < Date.now()) foundEvent.isOver == true;
 		if(err){
 			console.log(err);
 		}else{
