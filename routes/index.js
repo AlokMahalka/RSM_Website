@@ -18,6 +18,10 @@ router.get("/sentEmail", function(req,res){
 	res.render("sentMail/sentEmail");
 });
 
+router.get("/newsletter", function(req,res){
+	res.render("newsletter");
+});
+
 router.post('/sendemail', function(req,res){
 	const { name, email, subject, message} = req.body;
 	const from = 'noreply.rsmanipal@gmail.com';
