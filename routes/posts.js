@@ -9,46 +9,36 @@ router.get("/",function(req,res){
 	var noMatch;
 	if(req.query.search){
 		const regex = new RegExp(escapeRegex(req.query.search), 'gi');
-		var perPage = 6;
-		var pageQuery = parseInt(req.query.page);
-		var pageNumber = pageQuery ? pageQuery : 1;
-		Post.find({$or:[{title: regex}, {skills: regex}]}).skip((perPage * pageNumber) - perPage).limit(perPage).exec(function (err, allPosts) {
-			Post.countDocuments().exec(function (err, count) {
+		Post.find({$or:[{title: regex}, {skills: regex}]}).exec(function (err, allPosts) {
+			if (err) {
+				console.log(err);
+			} else {
+				if(allPosts.length < 1){
+					noMatch = "No project match that query, please try again!";
+				}
+				res.render("posts/index", {	posts: allPosts });
+			}
+			});
+		}else { 
+		Post.find({}).exec(function (err, allPosts) {
 				if (err) {
 					console.log(err);
 				} else {
-					if(allPosts.length < 1){
-						noMatch = "No project match that query, please try again!";
-					}
-					res.render("posts/index", {
-						posts: allPosts,
-						current: pageNumber,
-						pages: Math.ceil(count / perPage),
-						noMatch: noMatch
-					});
+					res.render("posts/index", {posts: allPosts});
 				}
 			});
-		});
-	} else { 
-		var perPage = 6;
-		var pageQuery = parseInt(req.query.page);
-		var pageNumber = pageQuery ? pageQuery : 1;
-		Post.find({}).skip((perPage * pageNumber) - perPage).limit(perPage).exec(function (err, allPosts) {
-			Post.countDocuments().exec(function (err, count) {
-				if (err) {
-					console.log(err);
-				} else {
-					res.render("posts/index", {
-						posts: allPosts,
-						current: pageNumber,
-						pages: Math.ceil(count / perPage),
-						noMatch: noMatch
-					});
-				}
-			});
-		});
-	}
-	
+		}
+	});
+
+router.get("/", function (req, res) {
+	// Get all campgrounds from DB
+	Campground.find({}, function (err, allCampgrounds) {
+		if (err) {
+			console.log(err);
+		} else {
+			res.render("campgrounds/index", {campgrounds: allCampgrounds});
+		}
+	});
 });
 
 //NEW 

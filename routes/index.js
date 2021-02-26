@@ -4,6 +4,7 @@ const { check , validationResult } = require("express-validator");
 const sendEmail = require("../sendEmail"); 
 const passport = require("passport");
 const User = require("../models/user");
+const Newsletter = require("../models/newsletter");
 const crypto = require('crypto');
 
 router.get("/",function(req,res){
@@ -20,6 +21,10 @@ router.get("/sentEmail", function(req,res){
 
 router.get("/newsletter", function(req,res){
 	res.render("newsletter");
+});
+
+router.get("/publications", function(req,res){
+  res.render("publication");
 });
 
 router.post('/sendemail', function(req,res){
@@ -244,5 +249,20 @@ router.get("/logout",function(req,res){
 	req.flash("success","Logged you Out");
 	res.redirect("/");
 });
+
+router.get("/subscribe",function(req,res){
+  res.redirect("newsletter");
+})
+
+router.post("/subscribe",function(req,res){
+  const newsubs = req.body;
+  Newsletter.create(newsubs,function(err,newlyCreated){
+    if(err){
+      console.log(err);
+    }else{
+      res.redirect("newsletter");
+    }
+  })
+})
 
 module.exports = router;
