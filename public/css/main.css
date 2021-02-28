@@ -187,7 +187,7 @@ Helper CSS
 }
 
 #header nav .pad{
-  padding: 20px 0;
+  padding: 20px 0 0;
 }
 
 #header nav img{
@@ -209,7 +209,7 @@ Helper CSS
 }
 
 #header.header-scrolled nav .pad{
-  padding: 17px 0;
+  padding: 17px 0 0;
 }
 
 #header.header-scrolled .logo{
@@ -257,7 +257,7 @@ Helper CSS
   display: block;
   position: absolute;
   left: 0;
-  top: calc(100% - 30px);
+  top: calc(100% - 15px);
   z-index: 99;
   opacity: 0;
   visibility: hidden;
@@ -281,7 +281,7 @@ Helper CSS
 .nav-menu .drop-down ul a {
   padding: 5px 10px;
   font-size: 14px;
-  font-weight: 800;
+  font-weight: 600;
   text-transform: none;
   color: #000000;
 }
@@ -298,7 +298,6 @@ Helper CSS
 
 .nav-menu .drop-down .drop-down ul {
   top: 0;
-  left: calc(100% - 30px);
 }
 
 .nav-menu .drop-down .drop-down:hover > ul {
