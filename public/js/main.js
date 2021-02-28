@@ -5,7 +5,7 @@
   $(window).scroll(function() {
     if ($(this).scrollTop() > 100) {
       $('#header').addClass('header-scrolled');
-      $("#header button").css("padding", "0");
+      $("#header button").css("padding", "5px 0");
     } else {
       $('#header').removeClass('header-scrolled');
       $("#header button").css("padding", "10px 0");

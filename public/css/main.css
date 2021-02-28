@@ -75,56 +75,6 @@ ol {
   margin-top: 80px;
 }
 
-.primary-btn {
-  display: inline-block;
-  font-size: 15px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
-  padding: 14px 32px 12px;
-  color: #ffffff;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  position: relative;
-  z-index: 1;
-}
-.primary-btn:hover:before {
-  height: 100%;
-  width: 100%;
-}
-.primary-btn:hover:after {
-  color: #ffffff !important;
-  height: 100%;
-  width: 100%;
-}
-.primary-btn:before {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 30px;
-  width: 30px;
-  border-left: 4px solid #060891;
-  border-top: 4px solid #060891;
-  content: "";
-  z-index: -1;
-  -webkit-transition: all, 0.7s;
-  -o-transition: all, 0.7s;
-  transition: all, 0.7s;
-}
-.primary-btn:after {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  height: 30px;
-  width: 30px;
-  border-right: 4px solid #060891;
-  border-bottom: 4px solid #060891;
-  content: "";
-  z-index: -1;
-  -webkit-transition: all, 0.7s;
-  -o-transition: all, 0.7s;
-  transition: all, 0.7s;
-}
-
 .site-btn {
 	font-size: 16px;
 	color: #ffffff;
@@ -220,6 +170,11 @@ Helper CSS
   transition: background 0.2s ease-in-out;
 }
 
+.table-dark{
+  background-color:#222222ef;
+  opacity: 0.8;
+}
+
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
@@ -231,8 +186,13 @@ Helper CSS
   background: #0a0119;
 }
 
-#header nav{
+#header nav .pad{
   padding: 20px 0;
+}
+
+#header nav img{
+  padding:3px 5px 0 0;
+  width: 70%;
 }
 
 #header .logo{
@@ -245,11 +205,11 @@ Helper CSS
 
 #header.header-scrolled {
   background: #0a0119;
-  height: 70px;
+  height: 72px;
 }
 
-#header.header-scrolled nav{
-  padding: 15px 0;
+#header.header-scrolled nav .pad{
+  padding: 17px 0;
 }
 
 #header.header-scrolled .logo{
@@ -472,8 +432,6 @@ Helper CSS
   color: #fff;
   z-index: 9998;
 }
-
-
 
 /*--------------------------------------------------------------
 # Hero Section

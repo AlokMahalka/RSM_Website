@@ -3,28 +3,28 @@
       <div class="logo float-left">
         <a href="/"><img src="img/RSM_Logo.png" alt="logo"></a>
       </div>
-      <nav class="nav-menu float-right d-none d-lg-block">
+      <nav class="nav-menu float-none d-none d-lg-block">
         <ul>
-          <li class="drop-down"><a href="">HOME</a>
+          <li class="drop-down pad"><a href="">HOME</a>
             <ul>
               <li><a href="/#aboutus">About Us</a></li>
               <li><a href="/publications">Our Publications</a></li>
               <li><a href="/#contact">Contact</a></li>
             </ul>
           </li>
-          <li><a href="/teams">TEAM</a></li>
-          <li><a href="/posts">PROJECTS</a></li>
-          <li><a href="/events">EVENTS</a></li>
-          <li><a href="/newsletter">NEWSLETTER</a></li>
+          <li class="pad"><a href="/teams">TEAM</a></li>
+          <li class="pad"><a href="/posts">PROJECTS</a></li>
+          <li class="pad"><a href="/events">EVENTS</a></li>
+          <li class="pad"><a href="/newsletter">NEWSLETTER</a></li>
         <% if(!currentUser){ %>  
-          <li class="drop-down"><a href="">Hello Stranger!</a>
+          <li class="drop-down pad"><a href="">Hello Stranger!</a>
             <ul>
               <li><a href="/login">Login</a></li>
               <li><a href="/register">Register</a></li>
             </ul>
           </li>
         <% } else {%>
-          <li class="drop-down"><a href="">Hello <%= currentUser.username%>!</a>
+          <li class="drop-down pad"><a href="">Hello <%= currentUser.username%>!</a>
             <ul>
               <% if(currentUser.isAdmin){ %>
                 <a href="/posts/new">Add New Project</a>
@@ -33,7 +33,8 @@
               <li><a href="/logout">Logout</a></li> 
             </ul>
           </li>
-        <% } %>    
+        <% } %>
+          <li><img class="mit_logo float-right-sm" src="img/mit_white.png" alt="logo"></li>
         </ul>
       </nav>
     </div>
