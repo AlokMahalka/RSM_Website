@@ -981,6 +981,9 @@ Helper CSS
 
 .team1 h1, .team1 h2, .team1 h3, .team1 h4, .team1 h5, .team1 h6 {
   color: #ffffff;
+}
+
+.team1 h6{
   line-height: 22px;
 }
 
