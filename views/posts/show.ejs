@@ -13,7 +13,7 @@
 	</div>
   </section>
 
-<!-- Blog Details Section Begin -->
+
 <div class="blog-details spad">
 	<div class="container">
 		<div class="row d-flex justify-content-center">
@@ -28,18 +28,30 @@
 					</div>
 					<div class="blog__details__desc">
 						<p>
-							<ul>
-								<li><strong>Author:</strong> <%= post.name %> </li>
-								<li><strong>No. of postions:</strong> <%= post.students %></li>
-								<li><strong>Skills Required:</strong> <%= post.skills %></li>
-								<li><strong>Last Date to Apply:</strong> <%= moment(post.endDate).format('LL') %></li>
+							<ul style="list-style-type:circle">
+								<li><strong class="bold">Author:</strong>  <%= post.name %> </li>
+								<% if(post.profName){ %> 
+									<li><strong class="bold">Professor's Name:</strong>  <%= post.profName %> </li>
+								<% } %> 
+								<li><strong class="bold">Project's Field:</strong>  <%= post.field %> </li>
+								<% if(post.students){ %> 
+									<li><strong class="bold">No. of postions:</strong>  <%= post.students %></li>
+								<% } %>
+								<% if(post.eligible){ %> 
+									<li><strong class="bold">Eligibility:</strong>  <%= post.eligible %></li>
+								<% } %>
+								<% if(post.skills){ %> 
+									<li><strong class="bold">Skills Required:</strong>  <%= post.skills %></li>
+								<% } %>
+								<li><strong class="bold">Team Members:</strong>  <%= post.members %></li>
+								<% if(post.output){ %> 
+									<li><strong class="bold">Result:</strong>  <%= post.output %></li>
+								<% } %>
 							</ul>
 						  </p>
 					</div>
 					<div class="blog__details__tags">
-						<% if(post.endDate > Date.now()){ %> 
-							<a href="/posts/<%= post._id %>/apply">Apply</a>
-						<% } %> 
+						<a href="/posts/<%= post._id %>/apply">Apply</a>
 						<% if(currentUser && currentUser.isAdmin){ %>
 							<a href="/posts/<%= post._id %>/edit">Edit</a>
 						<% } %> 	

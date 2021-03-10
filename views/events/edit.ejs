@@ -5,9 +5,7 @@
         <h2>Edit <%= event.title %></h2>
       </div>
       <div class="row">
-        <div class="col-lg-3">
-        </div>
-        <div class="col-lg-6">
+        <div class="offset-lg-2 col-lg-8">
           <form action="/events/<%= event._id %>?_method=PUT" method="POST" role="form" class="credit-form" novalidate>
             <div class="form-row">
               <div class="col-md-6 form-group">
@@ -49,6 +47,7 @@
                 <option value="Alumini-Webinar">Alumini Webinar</option>
                 <option value="Breakout">Breakout</option>
                 <option value="Paper-Discussion">Paper Discussion</option>
+                <option value="Collaboration">Collaboration</option>
               </select>
               <div class="invalid-feedback">
                 Please choose the type of event. 
@@ -70,10 +69,6 @@
           </form>
           <a href="/events" class="site-btn-2">Go Back</a>
         </div>
-        <div class="col-lg-3">
-        </div>
-
       </div>
-
     </div>
 </section>

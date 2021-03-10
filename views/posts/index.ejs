@@ -13,7 +13,7 @@
         </div>
       </div>
     </section><!-- End Blog Section -->
-
+ 
     <section class="search-section">
       <div class="container">
           <div class="row">
@@ -27,12 +27,22 @@
       </div>
     </section>
 
-    
+     
     <div class="blog blog-page spad">
       <div class="container">
-          <div class="row">
+        <div class="row">
+          <div class="col-lg-12">
+            <ul id="blog-flters">
+              <li data-filter="*" class="filter-active">All</li>
+              <li data-filter=".Projects-With-Vacancies">Projects With Vacancies</li>
+              <li data-filter=".Completed-Project">Completed Projects</li>
+              <li data-filter=".Ongoing-Project">Ongoing Projects</li>
+            </ul>
+          </div>
+        </div>
+          <div class="row blog-container">
             <% posts.forEach(function(post){ %>
-              <div class="col-md-6">
+              <div class="col-md-6 <%= post.status %>">
                   <div class="blog-item">
                       <div class="blog-img">
                         <img src="<%=post.image %>" alt="Blog" class="img-fluid"> 
@@ -42,13 +52,9 @@
                           <div class="blog-meta">
                               <i class="bx bx-user"></i>
                               <a href="/posts/<%= post._id %>"><%= post.name %></a>
-                              <i class="bx bx-calendar"></i>
-                              <p><%= moment(post.endDate).format('LL') %></p>
                           </div>
                           <div class="blog-text">
-                              <p>
-                                <%- post.descIntro %>...
-                              </p>
+                              <p><strong class="bold">Field:</strong>  <%= post.field %></p>
                               <a class="btn" href="/posts/<%= post._id %>">Read More</a>
                           </div>
                       </div>

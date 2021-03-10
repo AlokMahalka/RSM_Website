@@ -5,9 +5,7 @@
         <h2>Edit <%= post.title %></h2>
       </div>
       <div class="row">
-        <div class="col-lg-3">
-        </div>
-        <div class="col-lg-6">
+        <div class="offset-lg-2 col-lg-8">
           <form action="/posts/<%= post._id %>?_method=PUT" method="post" role="form" class="credit-form" novalidate>
             <div class="form-row">
               <div class="col-md-6 form-group">
@@ -24,18 +22,36 @@
               </div>
             </div>
             <div class="form-row">
+              <div class="col-md-6 form-group">
+                <input type="text" name="post[profName]" value="<%= post.profName %>" class="form-control" id="profName" placeholder="Professor's Name"/>
+              </div>
+              <div class="col-md-6 form-group">
+                <select name="status" id="status" class="form-control" placeholder="Status of Project" required>
+                  <option value="Projects-With-Vacancies">Project With Vacancies</option>
+                  <option value="Completed-Project">Completed Project</option>
+                  <option value="Ongoing-Project">Ongoing Project</option>
+                </select>
+                <div class="invalid-feedback">
+                  What is the status of the project?
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
                 <div class="col-md-6 form-group">
-                  <input type="number" name="post[students]" value="<%= post.students %>" class="form-control" id="students" min="0" required/>
+                  <input type="number" name="post[students]" value="<%= post.students %>" class="form-control" id="students" min="0" placeholder="No. of Students"/>
                   <div class="invalid-feedback">
                     How many helping hands do you need?
                   </div>
                 </div>
                 <div class="col-md-6 form-group">
-                  <input type="date" class="form-control" name="post[endDate]" value="<%= post.endDate %>" id="endDate" required/>
-                  <div class="invalid-feedback">
-                    Please enter a date.
-                  </div>
+                  <input type="text" class="form-control" name="post[eligible]" value="<%= post.eligible %>" id="eligible" placeholder="Eligibilty"/>
                 </div>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="members" id="members" value="<%- post.members %>" required/>
+            </div> 
+            <div class="form-group">
+              <input type="text" class="form-control" name="field" id="field" value="<%- post.field %>" placeholder="Project Fields" required/>
             </div>
             <div class="form-group">
               <input type="text" class="form-control form-control-lg" name="image" id="image" value="<%- post.image %> " required/>
@@ -44,7 +60,7 @@
               </div>
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" name="post[skills]" value="<%= post.skills %>" id="image" required/>
+              <input type="text" class="form-control" name="post[skills]" value="<%= post.skills %>" placeholder="Skills Required"/>
               <div class="invalid-feedback">
                 What skills are required?
               </div>
@@ -61,11 +77,12 @@
                 Tell them something about the project.
               </div>
             </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="output" id="output" value="<%= post.output %>" placeholder="Result(if completed)"/>
+            </div>
             <div class="text-center"><button type="submit" class="site-btn">Edit Post</button></div>
           </form>
           <a href="/posts" class="site-btn-2">Go Back</a>
-        </div>
-        <div class="col-lg-3">
         </div>
       </div>
     </div>

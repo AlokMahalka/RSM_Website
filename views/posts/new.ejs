@@ -6,9 +6,7 @@
         <h2>Create New Post</h2>
       </div>
       <div class="row">
-        <div class="col-lg-3">
-        </div>
-        <div class="col-lg-6">
+        <div class="offset-lg-2 col-lg-8">
           <form action="/posts" method="post" role="form" class="credit-form" novalidate>
             <div class="form-row">
               <div class="col-md-6 form-group">
@@ -25,18 +23,36 @@
               </div>
             </div>
             <div class="form-row">
+              <div class="col-md-6 form-group">
+                <input type="text" name="profName" class="form-control" id="profName" placeholder="Professor Name"/>
+              </div>
+              <div class="col-md-6 form-group">
+                <select name="status" id="status" class="form-control" placeholder="Status of Project" required>
+                  <option value="Projects-With-Vacancies">Project With Vacancies</option>
+                  <option value="Completed-Project">Completed Project</option>
+                  <option value="Ongoing-Project">Ongoing Project</option>
+                </select>
+                <div class="invalid-feedback">
+                  What is the status of the project?
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
                 <div class="col-md-6 form-group">
-                  <input type="number" name="students" class="form-control" id="students" placeholder="Number of Students" min="0" equired/>
+                  <input type="number" name="students" class="form-control" id="students" placeholder="Number of Students" min="0"/>
                   <div class="invalid-feedback">
                     How many helping hands do you need?
                   </div>
                 </div>
                 <div class="col-md-6 form-group">
-                  <input type="date" class="form-control" name="endDate" id="endDate" placeholder="Last Date to Apply" required/>
-                  <div class="invalid-feedback">
-                    Please enter a date.
-                  </div>
+                  <input type="text" class="form-control" name="eligible" id="eligible" placeholder="Eligibility"/>
                 </div>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="members" id="members" placeholder="Members of the Team" required/>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="field" id="field" placeholder="Project Fields" required/>
             </div>       
             <div class="form-group">
               <input type="text" class="form-control form-control-lg" name="image" id="image" placeholder="Image URL" required/>
@@ -45,30 +61,24 @@
               </div>
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" name="skills" id="skills" placeholder="Skills Required" required/>
+              <input type="text" class="form-control" name="skills" id="skills" placeholder="Skills Required"/>
               <div class="invalid-feedback">
                 What skills aare required?
               </div>
             </div>
             <div class="form-group">
-              <textarea class="form-control" name="descIntro" rows="4" placeholder="Introduction" required></textarea>
-              <div class="invalid-feedback">
-                Give it an Introduction.
-              </div>
+              <textarea class="form-control" name="descIntro" rows="4" placeholder="Introduction"></textarea>
             </div>
             <div class="form-group">
-              <textarea class="form-control" name="desc" rows="8" placeholder="Description" required></textarea>
-              <div class="invalid-feedback">
-                Tell them something about the project.
-              </div>
+              <textarea class="form-control" name="desc" rows="8" placeholder="Description"></textarea>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="output" id="output" placeholder="Result (if completed)"/>
             </div>
             <div class="text-center"><button type="submit"  class="site-btn">Create Post</button></div>
           </form>
           <a href="/posts" class="site-btn-2">Go Back</a>
         </div>
-        <div class="col-lg-3">
-        </div>
-
       </div>
     </div>
 </section>

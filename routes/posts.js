@@ -82,7 +82,6 @@ router.get("/:id/edit",middleware.isAnAdmin,function(req,res){
 });
 
 router.put("/:id",middleware.isAnAdmin,function(req,res){
-	console.log(req.body);
 	Post.findByIdAndUpdate(req.params.id,req.body.post,function(err,updatePost){
 		if(err){
 			res.redirect("/posts");
