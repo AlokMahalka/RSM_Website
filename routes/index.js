@@ -193,9 +193,8 @@ router.post("/register",[
 						const from = 'noreply.rsmanipal@gmail.com';
 						const subject = 'Research Society Email Verifcation';
 						const output = ` 
-						<h1>Welcome to Research Society!</h1>
-						<p>Thank You for registering.</p>
-						<p>Lets confirm your Email Address!<p>
+						<h3>Welcome!</h3>
+						<p>Thank you for registering with the Research Society MIT, Manipal's official student research body! To verify your account, please confirm your email address at this link!</p>
 						<a href="http://${req.headers.host}/verify-email?token=${user.emailToken}">Confirm Your Email</a> ` 
 					try{
 						sendEmail(to,from,subject,output);
