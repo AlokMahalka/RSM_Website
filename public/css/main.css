@@ -58,6 +58,9 @@ button:focus,
 textarea:focus {
 	outline: none;
 }
+a{
+  color: #f0f9ff;
+}
 
 a:hover,
 a:focus {
@@ -371,7 +374,7 @@ Helper CSS
 
 .mobile-nav a:hover, .mobile-nav .active > a, .mobile-nav li:hover > a {
   background-color: #0d0d0d;
-  color: #BB86FC;
+  color: #03DAC6;
   text-decoration: none;
 }
 
@@ -908,13 +911,14 @@ SERVICES
 --------------------------------------------------------------*/
 .breadcrumbs {
   padding: 15px 0;
-  background-color: #cfcfcf;
+  background-color: #686868;
   min-height: 40px;
 }
 
 .breadcrumbs h2 {
   font-size: 28px;
   font-weight: 100;
+  color: #f0f9ff;
 }
 
 .breadcrumbs ol {
@@ -927,12 +931,13 @@ SERVICES
 
 .breadcrumbs ol li + li {
   padding-left: 10px;
+  color: #f0f9ff;
 }
 
 .breadcrumbs ol li + li::before {
   display: inline-block;
   padding-right: 10px;
-  color: #6c757d;
+  color: #ffffff;
   content: "/";
 }
 
@@ -1193,8 +1198,8 @@ SERVICES
 }
 
 .search-section form input {
-  height: 40px;
-  padding-left: 20px;
+  height: 43px;
+  padding: 1px 0 1px 20px;
   border: 1px solid #544E5E;
   background: transparent;
   font-size: 16px;
@@ -1217,15 +1222,15 @@ SERVICES
 }
 .search-section form button {
   font-size: 20px;
+  padding: 1px;
   color: #ffffff;
-  border: none;
-  height: 42px;
-  width: 42px;
+  border: 1px solid #001f61;
+  height: 43px;
+  width: 43px;
   background: #001f61;
   line-height: 25px;
   text-align: center;
   position: absolute;
-  right: 52;
   top: 0;
 }
 
@@ -2097,8 +2102,8 @@ SERVICES
   font-size: 20px;
   color: #ffffff;
   border: none;
-  height: 50px;
-  width: 50px;
+  height: 50.5px;
+  width: 52px;
   background: #0049e7;
   line-height: 50px;
   text-align: center;
