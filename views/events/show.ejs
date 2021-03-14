@@ -13,39 +13,49 @@
           </div>
         </div>
     </section>
-    <!-- ======= Event Details Section ======= -->
-    <section class="event-details">
+    <div class="blog-details spad">
       <div class="container">
-
-        <div class="event-details-container">
-          <div class="event-detail-img"> 
-            <img src="<%= event.image %>"  alt="<%= event.image %>">
-            <div class="event-info">
-              <h3>Event information</h3>
-              <ul>
-                <%  if(event.isOver){ %>
-                  <li><strong>Held on <%= moment(event.onDate).format('LL') %></li>
-                <% }else {%>  
-                <li><strong>Date:</strong> <%= moment(event.onDate).format('LL') %></li>
-                <li><strong>Time:</strong> <%= event.time %></li>
-                <li><strong>Register Link:</strong><a href="<%= event.applyLink %>"> Click Here</a></li>
-                <li><strong>Location:</strong> <%= event.location %></li>
-                <% } %>
-              </ul>
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="d-flex justify-content-center">
+              <img style="width: 75%;" src="<%=event.image%>" alt="" class="img-fluid"> 
             </div>
-          </div>  
-        </div>
-
-        <div class="event-description">
-          <h2><%= event.title %></h2>
-          <p><%= event.description %></p>
-        </div>
-        <div class="blog__details__tags">
-          <% if(currentUser && currentUser.isAdmin){ %>
-            <a href="/events/<%= event._id %>/edit">Edit</a>
-          <% } %> 	
+          </div>
+          <div class="col-lg-4">
+            <div class="event-details">
+              <div class="event-info">
+                <h3>Event information</h3> 
+                <ul>
+                  <%  if(event.isOver){ %>
+                    <li><strong>Held on <%= moment(event.onDate).format('LL') %></li>
+                  <% }else {%>  
+                  <li><strong>Date:</strong> <%= moment(event.onDate).format('LL') %></li>
+                  <li><strong>Time:</strong> <%= event.time %></li>
+                  <% if(event.applyLink){ %> 
+                    <li><strong>Register Link:</strong><a href="<%= event.applyLink %>"> Click Here</a></li>
+                  <% } %> 
+                  <li><strong>Location:</strong> <%= event.location %></li>
+                  <% } %>
+                </ul>
+              </div>
+            </div>
+          </div>
+            <div class="blog__details__content">
+              <div class="blog__details__text">
+                <p><%= event.para1 %></p>
+                <p><%= event.para2 %></p>
+                <p><%= event.para3 %></p>
+              </div>
+              
+              <div class="blog__details__tags">
+                <% if(currentUser && currentUser.isAdmin){ %>
+                  <a href="/posts/<%= event._id %>/edit">Edit</a>
+                <% } %> 	
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      
-    </section><!-- End Event Details Section -->
+    </div>
+
 </main>

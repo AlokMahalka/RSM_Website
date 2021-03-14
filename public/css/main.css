@@ -911,7 +911,7 @@ SERVICES
 --------------------------------------------------------------*/
 .breadcrumbs {
   padding: 15px 0;
-  background-color: #686868;
+  background-color: #003b30;
   min-height: 40px;
 }
 
@@ -1091,7 +1091,7 @@ SERVICES
 
 .blog #blog-flters li:hover, .blog #blog-flters li.filter-active {
   border-color: #6f7b81;
-  color: #68A4C4;
+  color: #03DAC6;
 }
 
 .blog .blog-carousel {
@@ -1333,7 +1333,7 @@ SERVICES
 
 .event #event-flters li:hover, .event #event-flters li.filter-active {
   border-color: #6f7b81;
-  color: #68A4C4;
+  color: #03DAC6;
 }
 
 .event .event-item img {
@@ -1355,8 +1355,12 @@ SERVICES
 }
 
 .event .event-item .event-info h3 a {
-  color: #fff;
-  font-weight: 300;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 600;
+}
+
+.event .event-item .event-info h3 a:hover {
+  color: white;
 }
 
 .event .event-item .event-info a i {
@@ -1382,31 +1386,9 @@ SERVICES
 /*--------------------------------------------------------------
 # Event Details
 --------------------------------------------------------------*/
-.event-details {
-  background-image: url("../img/uncompressed/bg-blue.jpg");
-  background-repeat: no-repeat;
-	background-size: cover;
-	background-position: top center;
-  position: relative;
-  width: 100%;
-  padding: 45px 0;
-  opacity: 0.95;
-}
-
-.event-details .event-details-container {
-  position: relative;
-}
-
-.event-details img{
-  height: 400px;
-  width: calc(90% - 25px);
-  overflow: hidden;
-}
 .event-details .event-info {
   padding: 30px;
   position: absolute;
-  right: 0;
-  bottom: -70px;
   background: #fff;
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
   z-index: 2;
@@ -1428,6 +1410,14 @@ SERVICES
 
 .event-details .event-info ul li + li {
   margin-top: 10px;
+}
+
+.event-details .event-info a{
+  color: #000000;
+}
+
+.event-details .event-info a:hover{
+  color: #00007a;
 }
 
 .event-details .event-description {

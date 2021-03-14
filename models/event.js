@@ -5,7 +5,9 @@ const eventSchema = new mongoose.Schema({
 	time:String,
 	location:String,
 	image: String,
-	description:String,
+	para1:String,
+	para2:String,
+	para3:String,
 	applyLink:String,
 	onDate:{type:Date},
 	isOver: {
