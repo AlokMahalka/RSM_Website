@@ -14,7 +14,8 @@ const eventSchema = new mongoose.Schema({
 		type:Boolean,
 		default: false 
 	},
-	type:String
+	type:String,
+	recordinglink:String
 });
 
 module.exports = mongoose.model("Event",eventSchema);

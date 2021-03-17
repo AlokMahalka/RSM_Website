@@ -1252,7 +1252,8 @@ SERVICES
   font-size: 18px;
   line-height: 28px;
   font-weight: 100;
-  margin: 10px 0 20px;
+  margin: 10px 20px;
+  padding-top: 25px;
 }
 .blog__details__text p:last-child {
   margin-bottom: 0;

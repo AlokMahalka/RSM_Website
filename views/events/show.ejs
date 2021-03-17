@@ -36,6 +36,9 @@
                   <% } %> 
                   <li><strong>Location:</strong> <%= event.location %></li>
                   <% } %>
+                  <% if(event.recordinglink){ %>
+                    <li><strong>Recording :</strong><a href="<%= event.recordinglink %>"> Click Here</a></li>
+                  <% } %>  
                 </ul>
               </div>
             </div>
