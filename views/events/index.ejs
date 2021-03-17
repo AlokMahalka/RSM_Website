@@ -35,26 +35,13 @@
         <%  if((event.onDate) > Date.now()){ %>  
           <div class="col-lg-4 col-md-6 <%= event.type %>">
             <div class="event-item">
-              <img src="<%= event.image %>" class="img-fluid" alt="">
-              <div class="event-info">
-                <h3><a href="/events/<%= event._id %>"><%= event.title %></a></h3>
-                <div>
-                  <a href="<%= event.applyLink %>" title="Apply Form"><i class="bx bx-plus"></i></a>
-                  <a href="/events/<%= event._id %>" title="Event Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
+              <a href="/events/<%= event._id %>"><img src="<%= event.image %>" class="img-fluid" alt=""></a>
             </div>
           </div>
         <% } else if((event.onDate) < Date.now()){ event.isOver = true ;%>  
           <div class="col-lg-4 col-md-6 <%= event.type %>">
             <div class="event-item">
-              <img src="<%= event.image %>" class="img-fluid" alt="">
-              <div class="event-info">
-                <h3><a href="/events/<%= event._id %>"><%= event.title %></a></h3>
-                <div>
-                  <a href="/events/<%= event._id %>" title="Event Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
+              <a href="/events/<%= event._id %>"><img src="<%= event.image %>" class="img-fluid" alt=""></a>
             </div>
           </div>
         <% }}) %>
