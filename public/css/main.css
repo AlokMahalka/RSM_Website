@@ -451,11 +451,11 @@ Helper CSS
 # Hero Section
 --------------------------------------------------------------*/
 .hero-item {
-	height: 804px;
+	height: 500px;
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
-	-webkit-box-align: center;
+	-webkit-box-align: center; 
 	-ms-flex-align: center;
 	align-items: center;
 	-webkit-box-pack: center;
@@ -473,8 +473,8 @@ Helper CSS
 	height: 100%;
 	left: 0;
 	top: 0;
-	background: #0d0d11;
-	opacity: 0.74;
+	background: #1c1c1ce1;
+	opacity: 0.9;
 	z-index: 1;
 }
 
@@ -494,76 +494,28 @@ Helper CSS
 	font-weight: 500;
 	color: #fff;
 	margin-bottom: 15px;
+  z-index: 1000;
 }
 
-.hero-item p {
-	font-size: 20px;
-	margin-bottom: 35px;
-}
-.hero-item .site-btn,
-.hero-item p,
-.hero-item h2 {
-	position: relative;
-	top: 50px;
-	opacity: 0;
-}
-.hero-slider .owl-item.active .hero-item h2,
-.hero-slider .owl-item.active .hero-item p,
-.hero-slider .owl-item.active .hero-item .site-btn {
-	top: 0;
-	opacity: 1;
+.typewriter{
+  overflow: hidden; 
+  border-right: .15em solid orange; 
+  white-space: nowrap;
+  margin: 0 auto;
+  animation: 
+    typing 3.5s steps(40, end),
+    blink-caret .75s step-end infinite;
 }
 
-.hero-slider .owl-item.active .hero-item h2 {
-	-webkit-transition: all 0.5s ease 0.4s;
-	transition: all 0.5s ease 0.4s;
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
 }
 
-.hero-slider .owl-item.active .hero-item p {
-	-webkit-transition: all 0.5s ease 0.6s;
-	transition: all 0.5s ease 0.6s;
-}
 
-.hero-slider .owl-item.active .hero-item .site-btn {
-	-webkit-transition: all 0.5s ease 0.8s;
-	transition: all 0.5s ease 0.8s;
-}
-
-.slider-progress-bar {
-	position: absolute;
-	width: 100%;
-	bottom: 0;
-	left: 0;
-}
-
-.slider-progress-bar .progress {
-	height: 4px;
-	background: #0a0119;
-	-webkit-animation: sliderProgressBar ease;
-	animation: sliderProgressBar ease;
-}
-
-.my-slider:hover .slider-progress-bar .progress {
-	-webkit-animation-play-state: paused;
-	animation-play-state: paused;
-}
-
-@-webkit-keyframes sliderProgressBar {
-	0% {
-		width: 0%;
-	}
-	100% {
-		width: 100%;
-	}
-}
-
-@keyframes sliderProgressBar {
-	0% {
-		width: 0%;
-	}
-	100% {
-		width: 100%;
-	}
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: white; }
 }
 
 .about{
@@ -1289,9 +1241,8 @@ SERVICES
   font-weight: 100;
   color: #ffffff;
   display: inline-block;
-  margin-right: 11px;
+  margin: 10px 20px;
   padding: 8px 15px 7px;
-  margin-bottom: 5px;
   background: rgba(255, 255, 255, 0.1);
 }
 
