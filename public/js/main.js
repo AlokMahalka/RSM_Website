@@ -57,6 +57,13 @@
     }
   });
 
+  new TypeIt("#element", {
+    strings: "The Research Society",
+    speed: 150,
+    loop: true
+  }).pause(3000)
+    .go();
+
 
   // Mobile Navigation
   if ($('.nav-menu').length) {
@@ -230,3 +237,4 @@ function toggleSub(box, id) {
       el.style.display = 'none';
   }
 }
+
