@@ -60,9 +60,8 @@
   new TypeIt("#element", {
     strings: "The Research Society",
     speed: 150,
-    loop: true
-  }).pause(3000)
-    .go();
+    loop: false
+  }).go();
 
 
   // Mobile Navigation
