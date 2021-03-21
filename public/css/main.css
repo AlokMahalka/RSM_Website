@@ -1154,10 +1154,11 @@ SERVICES
   font-size: 20px;
   padding: 1px;
   color: #ffffff;
-  border: 1px solid #001f61;
-  height: 43px;
-  width: 43px;
-  background: #001f61;
+  border: 1px solid #003B30;
+  height: 44px;
+  width: 44px;
+  border-radius: 2px;
+  background: #003B30;
   line-height: 25px;
   text-align: center;
   position: absolute;
@@ -1972,6 +1973,7 @@ SERVICES
   font-size: 16px;
   color: #adadad;
 }
+
 .newsletter .section-title form input::-webkit-input-placeholder {
   color: #adadad;
 }
@@ -1994,7 +1996,7 @@ SERVICES
   height: 50.5px;
   width: 52px;
   border-radius: 2px;
-  background: #0049e7;
+  background: #003B30;
   line-height: 50px;
   text-align: center;
   position: relative;

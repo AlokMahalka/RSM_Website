@@ -124,10 +124,6 @@
 		$(this).css('background-image', 'url(' + bg + ')');
 	});
 
-
-  
-  
-
   $(window).on('load', function() {
     var eventIsotope = $('.event-container').isotope({
       layoutMode: 'fitRows'
@@ -176,7 +172,7 @@
     speed: 150,
     loop: false
   }).go();
-
+  
 })(jQuery);
 
 (function() {
