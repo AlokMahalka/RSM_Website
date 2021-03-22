@@ -165,7 +165,7 @@ router.post("/register",[
 		.isNumeric().withMessage("Invalid Registration Number")
 		.isLength({min:9}),
 		check('password')
-    	.isLength({min:6 , max: 12}).withMessage("Password must be 6-12 characters long")
+    	.isLength({min:6}).withMessage("Password must be atleast 6 characters long")
 	],function(req,res){
 		const errors = validationResult(req);
 		if (!errors.isEmpty()) {

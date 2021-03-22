@@ -197,8 +197,6 @@
 document.getElementById("showthis1").style.display = "none";
 
 document.getElementById('checkbox1').onclick = function() {
-  // call toggleSub when checkbox clicked
-  // toggleSub args: checkbox clicked on (this), id of element to show/hide
   toggleSub(this, 'showthis1');
 };
 
