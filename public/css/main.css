@@ -302,7 +302,7 @@ Helper CSS
 }
 
 .nav-menu .drop-down ul a:hover, .nav-menu .drop-down ul .active > a, .nav-menu .drop-down ul li:hover > a {
-  color: #03DAC6;
+  color: #4200ad;
 }
 
 .nav-menu .drop-down > a:after {
@@ -778,11 +778,6 @@ SERVICES
     padding-bottom:20px;
   }
 }
-
-.footer-dark .item {
-  margin-bottom:36px;
-}
-
 @media (max-width:767px) {
   .footer-dark .item {
     margin-bottom:0;
@@ -795,14 +790,15 @@ SERVICES
 }
 
 .footer-dark .item.social {
-  text-align:center;
-  padding: 11px 0 10px;
+  text-align:left;
+  padding: 40px 0 10px;
 }
 
 @media (max-width:991px) {
   .footer-dark .item.social {
     text-align:center;
     margin-top:20px;
+    padding: 11px 0 10px;
   }
 }
 
