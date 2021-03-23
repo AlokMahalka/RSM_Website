@@ -9,7 +9,7 @@ router.get("/",function(req,res){
 	var noMatch;
 	if(req.query.search){
 		const regex = new RegExp(escapeRegex(req.query.search), 'gi');
-		Post.find({$or:[{title: regex}, {skills: regex}]}).exec(function (err, allPosts) {
+		Post.find({$or:[{title: regex}, {skills: regex}, {field: regex}]}).exec(function (err, allPosts) {
 			if (err) {
 				console.log(err);
 			} else {
