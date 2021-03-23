@@ -236,11 +236,18 @@ router.get("/login",function(req,res){
 	res.render("login");
 });
 
-router.post("/login",passport.authenticate("local", {
-		successRedirect:"/",
-		failureRedirect:"/login"
-	}), function(req,res){
-});
+router.post('/login',
+  passport.authenticate('local', {
+    failureRedirect: '/login'
+  }), (req, res) => {
+    if (req.user.isVerified) {
+      res.redirect("/");
+    }else{
+      req.logout();
+      res.redirect("/login");
+    }
+  });
+
 
 //Logout
 router.get("/logout",function(req,res){

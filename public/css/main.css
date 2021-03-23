@@ -1421,10 +1421,6 @@ SERVICES
 .register-form input:focus::placeholder {
 	color: #0d0a27;
 }
-
-.register-form .block{
-  display: flex;
-}
 /*-----------------------------------------------------------------------------------*/
 
 .new-edit-form {

@@ -21,9 +21,9 @@ const eventRoutes = require("./routes/events");
 const url = process.env.DATABASE_URL || "mongodb://localhost/research"	
 mongoose.connect(url , {
 	useNewUrlParser: true,
-	useUnifiedTopology:true
+	useUnifiedTopology:true,
 });
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.set("view engine","ejs");
 app.set("views",path.join(__dirname, 'views'));
 app.use(express.static(__dirname + "/public"));

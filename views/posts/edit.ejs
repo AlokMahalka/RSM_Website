@@ -48,13 +48,13 @@
                 </div>
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" name="members" id="members" value="<%- post.members %>" required/>
+              <input type="text" class="form-control" name="post[members]" id="members" value="<%= post.members %>" required/>
             </div> 
             <div class="form-group">
-              <input type="text" class="form-control" name="field" id="field" value="<%- post.field %>" placeholder="Project Fields" required/>
+              <input type="text" class="form-control" name="post[field]" id="field" value="<%= post.field %>" placeholder="Project Fields" required/>
             </div>
             <div class="form-group">
-              <input type="text" class="form-control form-control-lg" name="image" id="image" value="<%- post.image %> " required/>
+              <input type="text" class="form-control form-control-lg" name="post[image]" id="image" value="<%= post.image %> " required/>
               <div class="invalid-feedback">
                 Image makes it look better  
               </div>
@@ -78,7 +78,7 @@
               </div>
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" name="output" id="output" value="<%= post.output %>" placeholder="Result(if completed)"/>
+              <input type="text" class="form-control" name="post[output]" id="output" value="<%= post.output %>" placeholder="Result(if completed)"/>
             </div>
             <div class="text-center"><button type="submit" class="site-btn">Edit Post</button></div>
           </form>
