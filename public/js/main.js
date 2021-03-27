@@ -178,9 +178,7 @@
 (function() {
   'use strict';
   window.addEventListener('load', function() {
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
     var forms = document.getElementsByClassName('credit-form');
-    // Loop over them and prevent submission
     var validation = Array.prototype.filter.call(forms, function(form) {
       form.addEventListener('submit', function(event) {
         if (form.checkValidity() === false) {
@@ -192,41 +190,3 @@
     });
   }, false);
 })();
-
-
-document.getElementById("showthis1").style.display = "none";
-
-document.getElementById('checkbox1').onclick = function() {
-  toggleSub(this, 'showthis1');
-};
-
-// called onclick of checkbox
-function toggleSub(box, id) {
-  // get reference to related content to display/hide
-  var el = document.getElementById(id);
-  if ( box.checked ) {
-      el.style.display = 'block';
-  } else {
-      el.style.display = 'none';
-  }
-}
-
-document.getElementById("showthis2").style.display = "none";
-
-document.getElementById('checkbox2').onclick = function() {
-  // call toggleSub when checkbox clicked
-  // toggleSub args: checkbox clicked on (this), id of element to show/hide
-  toggleSub(this, 'showthis2');
-};
-
-// called onclick of checkbox
-function toggleSub(box, id) {
-  // get reference to related content to display/hide
-  var el = document.getElementById(id);
-  if ( box.checked ) {
-      el.style.display = 'block';
-  } else {
-      el.style.display = 'none';
-  }
-}
-

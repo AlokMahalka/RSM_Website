@@ -22,6 +22,8 @@ const url = process.env.DATABASE_URL || "mongodb://localhost/research"
 mongoose.connect(url , {
 	useNewUrlParser: true,
 	useUnifiedTopology:true,
+	useFindAndModify:false,
+	useCreateIndex:true
 });
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine","ejs");

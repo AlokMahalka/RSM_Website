@@ -6,7 +6,7 @@
       </div>
       <div class="row">
         <div class="offset-lg-2 col-lg-8">
-          <form action="/events/<%= event._id %>?_method=PUT" method="POST" role="form" class="credit-form" novalidate>
+          <form action="/events/<%= event._id %>?_method=PUT" method="POST" role="form" class="credit-form">
             <div class="form-row">
               <div class="col-md-6 form-group">
                 <input type="text" name="event[title]" value="<%= event.title %>" class="form-control" id="title" required/>
