@@ -2,3 +2,5 @@
 /node_modules
 /Moderna
 .env
+researchsociety.csr
+researchsociety.key
