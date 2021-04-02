@@ -193,9 +193,10 @@ router.post("/register",[
 						const from = 'noreply.rsmanipal@gmail.com';
 						const subject = 'Research Society Email Verifcation';
 						const output = ` 
-						<h3>Welcome!</h3>
-						<p>Thank you for registering with the Research Society MIT, Manipal's official student research body! To verify your account, please confirm your email address at this link!</p>
-						<a href="http://${req.headers.host}/verify-email?token=${user.emailToken}">Confirm Your Email</a> ` 
+						<h2>Welcome!</h2>
+						<h4>Thank you for registering with the Research Society MIT, Manipal's official student research body! <br>
+            To verify your account, please confirm your email address at this link!<h4>>
+						<button><a href="http://${req.headers.host}/verify-email?token=${user.emailToken}">Confirm Your Email</a></button> ` 
 					try{
 						sendEmail(to,from,subject,output);
 						res.redirect('sentEmail');
@@ -238,7 +239,8 @@ router.get("/login",function(req,res){
 
 router.post('/login',
   passport.authenticate('local', {
-    failureRedirect: '/login'
+    failureRedirect: '/login',
+    failureFlash:'Invalid Username or Password'
   }), (req, res) => {
     if (req.user.isVerified) {
       res.redirect("/");
@@ -264,8 +266,10 @@ router.post("/subscribe",function(req,res){
   const newsubs = req.body;
   Newsletter.create(newsubs,function(err,newlyCreated){
     if(err){
+      req.flash("error","Try Again Later! Server Down")
       console.log(err);
     }else{
+      req.flash("success","Thank you for subscribing!")
       res.redirect("newsletter");
     }
   })

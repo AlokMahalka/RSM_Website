@@ -19,9 +19,12 @@ router.post("/",middleware.isLoggedIn,middleware.isAnAdmin,function(req,res){
 	const newevent = req.body;
 	Event.create(newevent,function(err,newlyCreated){
 		if(err){
+			res.redirect("/events");
+			req.flash("error","Could not create event. Try again later!")
 			console.log(err);
 		}else{
 			res.redirect("/events");
+			req.flash("success","Event created successfully");
 		}
 	});
 });
@@ -59,6 +62,7 @@ router.put("/:id",middleware.isAnAdmin,function(req,res){
 	Event.findByIdAndUpdate(req.params.id,req.body.event,function(err,updateEvent){
 		if(err){
 			res.redirect("/events");
+			req.flash("error","Could not edit the event. Try again later!")
 		}else{
 			res.redirect("/events/"+req.params.id);
 		}

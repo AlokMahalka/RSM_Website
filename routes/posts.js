@@ -46,9 +46,12 @@ router.post("/",middleware.isLoggedIn,middleware.isAnAdmin,function(req,res){
 	const newpost = req.body;
 	Post.create(newpost,function(err,newlyCreated){
 		if(err){
+			res.redirect("/");
+			req.flash("error","Could not create new project!")
 			console.log(err);
 		}else{
 			res.redirect("/posts");
+			req.flash("success","Project Created!")
 		}
 	});
 });
@@ -85,6 +88,7 @@ router.put("/:id",middleware.isAnAdmin,function(req,res){
 	Post.findByIdAndUpdate(req.params.id,req.body.post,function(err,updatePost){
 		if(err){
 			res.redirect("/posts");
+			req.flash("error", "Could not edit the post.Try Again Later")
 		}else{
 			res.redirect("/posts/"+ req.params.id);
 		}
@@ -230,6 +234,7 @@ router.post('/:id/applyform',function(req,res){
 		`;
 		sendEmail(to,from,desc,output);
 		res.redirect('/posts');
+		req.flash("success","Your application has been succesfully submitted.")
 		}
 	})
 })
