@@ -189,7 +189,7 @@ router.post("/register",[
 					console.log(err);
 					return res.redirect('register');
 				}else{
-						const to  = user.email;
+						const to  = user.emailMIT;
 						const from = 'noreply.rsmanipal@gmail.com';
 						const subject = 'Research Society Email Verifcation';
 						const output = ` 
