@@ -197,7 +197,7 @@ router.post("/register",[
 						<h2>Welcome!</h2>
 						<h4>Thank you for registering with the Research Society MIT, Manipal's official student research body! <br>
             To verify your account, please confirm your email address at this link!<h4>
-						<button><a href="http://${req.headers.host}/verify-email?token=${user.emailToken}">Confirm Your Email</a></button> ` 
+						<button><a href="https://${req.headers.host}/verify-email?token=${user.emailToken}">Confirm Your Email</a></button> ` 
 					try{
 						sendEmail(to,from,subject,output);
 						res.redirect('sentEmail');
@@ -309,7 +309,7 @@ router.post("/forgotpassword",function(req,res){
         <h2>Welcome!</h2>
         <h4>You are receiving this because you (or someone else) have requested the reset of the password for your account.<br>
           Please click on the following link, or paste this into your browser to complete the process:<br>
-          <button><a href="http://${req.headers.host}/reset?token=${token}">Reset Password</a></button><br>
+          <button><a href="https://${req.headers.host}/reset?token=${token}">Reset Password</a></button><br>
           If you did not request this, please ignore this email and your password will remain unchanged.</h4>` 
       try{
         sendEmail(to,from,subject,output);
