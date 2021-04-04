@@ -6,6 +6,7 @@ const passport = require("passport");
 const User = require("../models/user");
 const Newsletter = require("../models/newsletter");
 const crypto = require('crypto');
+const async = require('async');
 
 router.get("/",function(req,res){
 	res.render("home"); 
@@ -195,7 +196,7 @@ router.post("/register",[
 						const output = ` 
 						<h2>Welcome!</h2>
 						<h4>Thank you for registering with the Research Society MIT, Manipal's official student research body! <br>
-            To verify your account, please confirm your email address at this link!<h4>>
+            To verify your account, please confirm your email address at this link!<h4>
 						<button><a href="http://${req.headers.host}/verify-email?token=${user.emailToken}">Confirm Your Email</a></button> ` 
 					try{
 						sendEmail(to,from,subject,output);
@@ -274,5 +275,112 @@ router.post("/subscribe",function(req,res){
     }
   })
 })
+
+router.get("/forgotpassword",function(req,res){
+  res.render("forgotpassword");
+});
+
+router.post("/forgotpassword",function(req,res){
+  async.waterfall([
+    function(done){
+      crypto.randomBytes(20,function(err,buf){
+        var token = buf.toString('hex');
+        done(err,token);
+      });
+    },
+    function(token,done){
+      User.findOne({email: req.body.email} , function(err,user){
+        if(!user){
+          req.flash("error","No account with that email address exist.");
+          return res.redirect("/forgotpassword");
+        }
+        user.resetPasswordToken = token;
+        user.resetPasswordExpires = Date.now() + 600000;
+        user.save(function(err){
+          done(err,token,user);
+        });
+      });
+    },
+    function(token,user,done){
+        const to  = user.email;
+        const from = 'noreply.rsmanipal@gmail.com';
+        const subject = 'Research Society - Password Reset';
+        const output = ` 
+        <h2>Welcome!</h2>
+        <h4>You are receiving this because you (or someone else) have requested the reset of the password for your account.<br>
+          Please click on the following link, or paste this into your browser to complete the process:<br>
+          <button><a href="http://${req.headers.host}/reset?token=${token}">Reset Password</a></button><br>
+          If you did not request this, please ignore this email and your password will remain unchanged.</h4>` 
+      try{
+        sendEmail(to,from,subject,output);
+        req.flash("success","Mail has been sent to the given Email ID.")
+        res.redirect("/forgotpassword");
+      }catch(error){
+        console.log(error);
+        done(error,'done');
+      }
+    }
+  ], function(err){
+    if(err) return next(err);
+    res.redirect("/forgotpassword");
+  })
+})
+
+router.get("/reset", function(req, res) {
+  User.findOne({ resetPasswordToken: req.query.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
+    if (!user) {
+      req.flash('error', 'Password reset token is invalid or has expired.');
+      return res.redirect('/forgotpassword');
+    }
+    res.render("reset", {token: req.query.token});
+  });
+});
+
+router.post('/reset/:token', function(req, res) {
+  async.waterfall([
+    function(done) {
+      User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
+        if (!user) {
+          req.flash('error', 'Password reset token is invalid or has expired.');
+          return res.redirect('back');
+        }
+        if(req.body.password === req.body.confirm) {
+          user.setPassword(req.body.password, function(err) {
+            user.resetPasswordToken = undefined;
+            user.resetPasswordExpires = undefined;
+
+            user.save(function(err) {
+              req.logIn(user, function(err) {
+                done(err, user);
+              });
+            });
+          })
+        } else {
+            req.flash("error", "Passwords do not match.");
+            return res.redirect('back');
+        }
+      });
+    },
+    function(user, done) {
+        const to  = user.email;
+        const from = 'noreply.rsmanipal@gmail.com';
+        const subject = 'Your Password has been changed!';
+        const output = ` 
+        <h2>Hello!</h2>
+        <h4>This is a confirmation that the password for your account ${user.email} has been changed </h4>` 
+      try{
+        sendEmail(to,from,subject,output);
+        req.flash("success","Your password has been changed")
+        res.redirect("/login");
+      }catch(error){
+        console.log(error);
+        done(error);
+      }
+    }
+  ], function(err) {
+    res.redirect('/login');
+  });
+});
+
 
 module.exports = router;
