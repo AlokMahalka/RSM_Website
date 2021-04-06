@@ -1,0 +1,81 @@
+<% layout('layouts/boilerplate')%>
+
+<section class="apply-form spade" id="apply-form">
+    <div class="container mt-5">
+      <div class="section-title">
+        <h2>Share Your Project Idea</h2>
+      </div>
+      <div class="row">
+        <div class="offset-lg-2 col-lg-8">
+          <form action="/ideas" method="post" class="credit-form">
+            <div class="form-row">
+              <div class="col-md-6 form-group">
+                <input type="text" name="name" class="form-control" id="name" value="<%=currentUser.username%>" required/>
+                <div class="invalid-feedback">
+                  Please Enter Your Name
+                </div>
+              </div>
+              <div class="col-md-6 form-group">
+                <input type="email" class="form-control" name="email" id="email" value="<%=currentUser.email%> " required/>
+                <div class="invalid-feedback">
+                  Please Provide Your Email ID
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 form-group">
+                  <input type="number" name="regNo" class="form-control" id="regNo" value="<%= currentUser.regNo %>" required/>
+                  <div class="invalid-feedback">
+                    Your Registration Number
+                  </div>
+                </div>
+                <div class="col-md-6 form-group">
+                    <input type="number" name="students" class="form-control" id="students" placeholder="Number of Contributors Required" min="0"/>
+                    <div class="invalid-feedback">
+                      How many helping hands do you need?
+                    </div>
+                  </div>
+            </div>       
+            <div class="form-group">
+              <input type="text" class="form-control form-control-lg" name="projecttitle" id="projecttitle" placeholder="Project Title/Idea" required/>
+              <div class="invalid-feedback">
+                Title of the project
+              </div>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control form-control-lg" name="field" id="field" placeholder="Field of the Project" required/>
+                <div class="invalid-feedback">
+                  Field of the project
+                </div>
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" name="proposal" rows="8" placeholder="Description of the project.)" required></textarea>
+                <div class="invalid-feedback">
+                  Plese don't leave this field empty.
+                </div>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" name="researchexp" rows="8" placeholder="Prior Research Experience (N/A if none)" required></textarea>
+              <div class="invalid-feedback">
+                Plese don't leave this field empty.
+              </div>
+          </div>
+          <div class="form-group">
+              <textarea class="form-control" name="technicalexp" rows="8" placeholder="Prior Technical Experience (Projects,Courses etc.) " required></textarea>
+              <div class="invalid-feedback">
+                  Plese don't leave this field empty.
+              </div>
+          </div>
+            <div class="form-group">
+                <input type="text" class="form-control form-control-lg" name="prof" id="prof" placeholder="Professor you want to approach(N/A if none)"/>
+                <div class="invalid-feedback">
+                  Title of the project
+                </div>
+              </div>
+            <div class="text-center"><button type="submit" class="site-btn">Submit</button></div>
+          </form>
+          <a href="/posts" class="site-btn-2">Go Back</a>
+        </div>
+      </div>
+    </div>
+</section>

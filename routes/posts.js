@@ -30,17 +30,6 @@ router.get("/",function(req,res){
 		}
 	});
 
-router.get("/", function (req, res) {
-	// Get all campgrounds from DB
-	Campground.find({}, function (err, allCampgrounds) {
-		if (err) {
-			console.log(err);
-		} else {
-			res.render("campgrounds/index", {campgrounds: allCampgrounds});
-		}
-	});
-});
-
 //NEW 
 router.post("/",middleware.isLoggedIn,middleware.isAnAdmin,function(req,res){
 	const newpost = req.body;
@@ -95,7 +84,7 @@ router.put("/:id",middleware.isAnAdmin,function(req,res){
 	});
 });
 
-router.get("/:id/apply",function(req,res){
+router.get("/:id/apply",middleware.isLoggedIn,function(req,res){
 	Post.findById(req.params.id,function(err,foundPost){
 		if(err){
 			res.redirect("/posts");
@@ -105,7 +94,7 @@ router.get("/:id/apply",function(req,res){
 	});
 });
 
-router.post('/:id/applyform',function(req,res){
+router.post('/:id/applyform',middleware.isLoggedIn,function(req,res){
 	Post.findById(req.params.id,function(err,foundPost){
 		if(err){
 			console.log(err);
