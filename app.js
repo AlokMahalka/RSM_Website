@@ -25,6 +25,14 @@ mongoose.connect(url , {
 	useFindAndModify:false,
 	useCreateIndex:true
 });
+if(process.env.NODE_ENV === 'production') {
+	app.use((req, res, next) => {
+	  if (req.header('x-forwarded-proto') !== 'https')
+		res.redirect(`https://${req.header('host')}${req.url}`)
+	  else
+		next()
+	})
+  }
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine","ejs");
 app.set("views",path.join(__dirname, 'views'));
