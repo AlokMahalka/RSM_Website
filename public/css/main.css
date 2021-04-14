@@ -2022,18 +2022,27 @@ SERVICES
   padding: 0;
   border-radius: 0px;
   text-align: center;
-  
 }
+
+@media(max-width:767px){
+  #accordion .panel-heading{
+    text-align: left;
+  }
+}
+
 #accordion .panel-heading a:not(.collapsed) {
   color: white;
   transition: all 0.2s ease-in;
+}
+
+#accordion .panel-body{
+  padding-bottom: 20px;
 }
 
 #accordion .panel-body li{
   color:#e5ddf3;
   list-style: none;
   padding-top: 10px;
-  padding-left: 30px;
   font-size: 18px;
   font-weight: 500;
   text-align: center;
@@ -2042,8 +2051,8 @@ SERVICES
 /* Add Indicator fontawesome icon to the left */
 #accordion .panel-heading .accordion-toggle::before {
   font-family: 'FontAwesome';
-  content: '\f00d';
-  float: left;
+  content: '\f106';
+  float: right;
   color: white;
   font-weight: lighter;
   transform: rotate(0deg);
@@ -2051,7 +2060,6 @@ SERVICES
 }
 #accordion .panel-heading .accordion-toggle.collapsed::before {
   color: #444;
-  transform: rotate(-135deg);
+  transform: rotate(180deg);
   transition: all 0.2s ease-in;
 }
-
