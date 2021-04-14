@@ -1995,3 +1995,63 @@ SERVICES
   right: 10px;
   top: 2px;
 }
+
+#accordion .panel {
+  border-radius: 0;
+  border: 0;
+  margin-top: 0px;
+}
+#accordion a {
+  display: block;
+  padding: 10px 15px;
+  border-top: 1px solid #003B30;
+  text-decoration: none;
+}
+#accordion .panel-heading a.collapsed:hover,
+#accordion .panel-heading a.collapsed:focus {
+  background-color: #003B30;
+  color: white;
+  transition: all 0.2s ease-in;
+}
+#accordion .panel-heading a.collapsed:hover::before,
+#accordion .panel-heading a.collapsed:focus::before {
+  color: white;
+}
+
+#accordion .panel-heading {
+  padding: 0;
+  border-radius: 0px;
+  text-align: center;
+  
+}
+#accordion .panel-heading a:not(.collapsed) {
+  color: white;
+  transition: all 0.2s ease-in;
+}
+
+#accordion .panel-body li{
+  color:#e5ddf3;
+  list-style: none;
+  padding-top: 10px;
+  padding-left: 30px;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Add Indicator fontawesome icon to the left */
+#accordion .panel-heading .accordion-toggle::before {
+  font-family: 'FontAwesome';
+  content: '\f00d';
+  float: left;
+  color: white;
+  font-weight: lighter;
+  transform: rotate(0deg);
+  transition: all 0.2s ease-in;
+}
+#accordion .panel-heading .accordion-toggle.collapsed::before {
+  color: #444;
+  transform: rotate(-135deg);
+  transition: all 0.2s ease-in;
+}
+
