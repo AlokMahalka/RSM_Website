@@ -13,7 +13,15 @@
             </ul>
           </li>
           <li class="pad"><a href="/teams">TEAM</a></li>
-          <li class="pad"><a href="/posts">PROJECTS</a></li>
+          <% if(!currentUser){ %>
+            <li class="pad"><a href="/posts">PROJECTS</a></li>
+          <% }else{ %> 
+            <li class="drop-down pad"><a href="/posts">PROJECTS</a>
+              <ul>
+                <li><a href="/ideas">Have a project idea?</a></li>
+              </ul>
+            </li>
+          <% } %> 
           <li class="pad"><a href="/events">EVENTS</a></li>
           <li class="pad"><a href="/newsletter">NEWSLETTER</a></li>
         <% if(!currentUser){ %>  
@@ -30,7 +38,6 @@
                 <a href="/posts/new">Add New Project</a>
                 <a href="/events/new">Add New Event</a>
               <% } %>
-              <li><a href="/ideas">Have a project idea?</a></li>
               <li><a href="/logout">Logout</a></li> 
             </ul>
           </li>
