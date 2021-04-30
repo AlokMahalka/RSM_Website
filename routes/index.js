@@ -191,7 +191,7 @@ router.post("/register",[
 					console.log(err);
 					return res.redirect('register');
 				}else{
-						const to  = user.email;
+						const to  = user.emailMIT ? user.emailMIT : user.email ;
 						const from = 'noreply.rsmanipal@researchsocietymit.com';
 						const subject = 'Research Society Email Verifcation';
 						const output = ` 
@@ -303,14 +303,14 @@ router.post("/forgotpassword",function(req,res){
       });
     },
     function(token,user,done){
-        const to  = user.email;
+        const to  = user.emailMIT ? user.emailMIT : user.email;
         const from = 'noreply.rsmanipal@researchsocietymit.com';
         const subject = 'Research Society - Password Reset';
         const output = ` 
         <h2>Welcome!</h2>
         <h4>You are receiving this because you (or someone else) have requested the reset of the password for your account.<br>
           Please click on the following link, or paste this into your browser to complete the process:<br>
-          <button><a href="https://${req.headers.host}/reset?token=${token}">Reset Password</a></button><br>
+          <a href="https://${req.headers.host}/reset?token=${token}">Reset Password</a><br>
           If you did not request this, please ignore this email and your password will remain unchanged.</h4>` 
       try{
         sendEmail(to,from,subject,output);
@@ -363,7 +363,7 @@ router.post('/reset/:token', function(req, res) {
       });
     },
     function(user, done) {
-        const to  = user.email;
+        const to  = user.emailMIT ? user.emailMIT : user.email;
         const from = 'noreply.rsmanipal@researchsocietymit.com';
         const subject = 'Your Password has been changed!';
         const output = ` 
