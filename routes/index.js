@@ -31,7 +31,7 @@ router.get("/publications", function(req,res){
 
 router.post('/sendemail', function(req,res){
 	const { name, email, subject, message} = req.body;
-	const from = 'noreply.rsmanipal@gmail.com';
+	const from = 'noreply.rsmanipal@researchsocietymit.com';
 	const to = 'researchsociety.manipal@gmail.com';
 	const desc = `${subject}`;
 	const output = `
@@ -192,7 +192,7 @@ router.post("/register",[
 					return res.redirect('register');
 				}else{
 						const to  = user.email;
-						const from = 'noreply.rsmanipal@gmail.com';
+						const from = 'noreply.rsmanipal@researchsocietymit.com';
 						const subject = 'Research Society Email Verifcation';
 						const output = ` 
 						<h2>Welcome!</h2>
@@ -304,7 +304,7 @@ router.post("/forgotpassword",function(req,res){
     },
     function(token,user,done){
         const to  = user.email;
-        const from = 'noreply.rsmanipal@gmail.com';
+        const from = 'noreply.rsmanipal@researchsocietymit.com';
         const subject = 'Research Society - Password Reset';
         const output = ` 
         <h2>Welcome!</h2>
@@ -364,7 +364,7 @@ router.post('/reset/:token', function(req, res) {
     },
     function(user, done) {
         const to  = user.email;
-        const from = 'noreply.rsmanipal@gmail.com';
+        const from = 'noreply.rsmanipal@researchsocietymit.com';
         const subject = 'Your Password has been changed!';
         const output = ` 
         <h2>Hello!</h2>
@@ -389,7 +389,7 @@ router.get("/ideas",middleware.isLoggedIn,function(req,res){
 
 router.post('/ideas',middleware.isLoggedIn,function(req,res){
 	    const { name,email,regNo,students,projecttitle,field,proposal,prof,researchexp,technicalexp} = req.body;
-			const from = 'noreply.rsmanipal@gmail.com';
+			const from = 'noreply.rsmanipal@researchsocietymit.com';
 			const to = 'researchsociety.manipal@gmail.com';
 			const desc = "New Project Idea";
 			const output = `
