@@ -198,7 +198,7 @@ router.post("/register",[
 						<h2>Welcome!</h2>
 						<h4>Thank you for registering with the Research Society MIT, Manipal's official student research body! <br>
             To verify your account, please confirm your email address at this link!<h4>
-						<button><a href="https://${req.headers.host}/verify-email?token=${user.emailToken}">Confirm Your Email</a></button> ` 
+						<a href="https://${req.headers.host}/verify-email?token=${user.emailToken}">Confirm Your Email</a> ` 
 					try{
 						sendEmail(to,from,subject,output);
 						res.redirect('sentEmail');
